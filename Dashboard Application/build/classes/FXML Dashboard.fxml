@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="618.0" prefWidth="852.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLDashboardController">
+   <children>
+      <HBox layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <MenuBar id="menu_bar" layoutY="2.0" prefHeight="25.0" prefWidth="852.0" HBox.hgrow="ALWAYS">
+              <menus>
+                <Menu id="menu_file" mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem id="item_save_configuration" mnemonicParsing="false" text="Save Configuration" />
+                        <MenuItem id="item_load_configuration" mnemonicParsing="false" text="Load Configuration" />
+                        <MenuItem id="item_exit" mnemonicParsing="false" text="Exit" />
+                  </items>
+                </Menu>
+                <Menu id="menu_properties" mnemonicParsing="false" text="Properties">
+                  <items>
+                        <MenuItem id="item_lock_editing" mnemonicParsing="false" text="Lock Editing" />
+                        <MenuItem id="item_unlock_editing" mnemonicParsing="false" text="Unlock Editing" />
+                        <MenuItem id="item_help" mnemonicParsing="false" text="Help" />
+                        <MenuItem id="item_about" mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Widgets">
+                  <items>
+                    <MenuItem id="item_add" mnemonicParsing="false" text="Add" />
+                        <MenuItem id="item_delete_widget" mnemonicParsing="false" text="Delete Widget" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
