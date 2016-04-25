@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="618.0" prefWidth="852.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.application.FXMLDashboardController">
+   <children>
+      <HBox layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <MenuBar id="menu_bar" layoutY="2.0" prefHeight="25.0" prefWidth="852.0" HBox.hgrow="ALWAYS">
+              <menus>
+                <Menu id="menu_file" mnemonicParsing="false" onAction="#handleFileMenuActionFile" text="File">
+                  <items>
+                    <MenuItem id="item_save_configuration" mnemonicParsing="false" onAction="#handleFileMenuActionSaveConfig" text="Save Configuration" />
+                        <MenuItem id="item_load_configuration" mnemonicParsing="false" onAction="#handleFileMenuActionLoadConfig" text="Load Configuration" />
+                        <MenuItem id="item_exit" mnemonicParsing="false" onAction="#handleFileMenuActionExit" text="Exit" />
+                  </items>
+                </Menu>
+                <Menu id="menu_properties" mnemonicParsing="false" text="Properties">
+                  <items>
+                        <MenuItem id="item_lock_editing" mnemonicParsing="false" onAction="#handleFileMenuActionLockEdit" text="Lock Editing" />
+                        <MenuItem id="item_unlock_editing" mnemonicParsing="false" onAction="#handleFileMenuActionUnlockEdit" text="Unlock Editing" />
+                        <MenuItem id="item_help" mnemonicParsing="false" onAction="#handleFileMenuActionHelp" text="Help" />
+                        <MenuItem id="item_about" mnemonicParsing="false" onAction="#handleFileMenuActionAbout" text="About" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Widgets">
+                  <items>
+                    <MenuItem id="item_add" mnemonicParsing="false" onAction="#handleFileMenuActionAddWidget" text="Add" />
+                        <MenuItem id="item_delete_widget" mnemonicParsing="false" onAction="#handleFileMenuActionDeleteWidget" text="Delete Widget" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

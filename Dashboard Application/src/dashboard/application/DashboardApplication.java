@@ -6,18 +6,14 @@
 package dashboard.application;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.control.*;
-import java.net.URL;
 import javafx.scene.Parent;
+import javafx.fxml.JavaFXBuilderFactory;
 
 
 
@@ -29,10 +25,24 @@ import javafx.scene.Parent;
 public class DashboardApplication extends Application {
     
     // Fields
+    public Stage primaryStage;
     
     
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage stage) {
+        
+        primaryStage = stage;
+        
+        try {
+        
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("FXMLDashboard.fxml"));
+        Parent root = loader.load();
+        ((FXMLDashboardController) loader.getController()).setPrimaryStage(primaryStage);
+        
+        } catch (Exception e) {
+            
+        }
         /*
         Button btn = new Button();
         btn.setText("Say 'Hello World'");
@@ -55,19 +65,21 @@ public class DashboardApplication extends Application {
         */
         
         try {
-            AnchorPane page = (AnchorPane) FXMLLoader.load(DashboardApplication.class.getResource("FXML Dashboard.fxml"));
+            AnchorPane page = (AnchorPane) FXMLLoader.load(DashboardApplication.class.getResource("FXMLDashboard.fxml"));
             Scene scene = new Scene(page);
+            
+            
             primaryStage.setScene(scene);
             primaryStage.setTitle("Realtime Robotics Dashboard");
             
             
-            Parent root = FXMLLoader.load(DashboardApplication.class.getResource("FXML Dashboard.fxml"));
-            
-            MenuBar menuBar = (MenuBar) root.lookup("menu_bar");
-            //menuBar.prefWidthProperty().bind(primaryStage.widthProperty());
+            //Parent root = FXMLLoader.load(DashboardApplication.class.getResource("FXML Dashboard.fxml"));
             
             
             primaryStage.show();
+            
+            
+            
         } catch (Exception ex) {
             Logger.getLogger(DashboardApplication.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -78,6 +90,28 @@ public class DashboardApplication extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+    
+    private void gotoAbout() {
+        try {
+            replaceSceneContent("FXMLAbout.fxml");
+        } catch (Exception ex) {
+            Logger.getLogger(DashboardApplication.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private Parent replaceSceneContent(String fxml) throws Exception {
+        Parent page = (Parent) FXMLLoader.load(DashboardApplication.class.getResource(fxml), null, new JavaFXBuilderFactory());
+        Scene scene = primaryStage.getScene();
+        if (scene == null) {
+            scene = new Scene(page, 700, 450);
+            //scene.getStylesheets().add(Dash.class.getResource("demo.css").toExternalForm());
+            primaryStage.setScene(scene);
+        } else {
+            primaryStage.getScene().setRoot(page);
+        }
+        primaryStage.sizeToScene();
+        return page;
     }
     
 }
