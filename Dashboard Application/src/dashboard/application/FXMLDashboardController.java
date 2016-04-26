@@ -101,19 +101,13 @@ public class FXMLDashboardController implements Initializable {
        try {
         
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAbout.fxml"));
-            //FXMLLoader loader = new FXMLLoader();
-            //loader.setLocation(getClass().getResource("FXMLAbout.fxml"));
-            
-            
-            loader.setController(this);
-            Parent parent = (Parent) loader.load();
-            
-            
-            Scene scene = new Scene(parent);
-            //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            primaryStage.setScene(scene);
-            primaryStage.show();
+            Parent root;
+            addWidgetStage = new Stage();
+            root = FXMLLoader.load(getClass().getResource("FXMLAbout.fxml"));
+            addWidgetStage.setScene(new Scene(root));
+            addWidgetStage.initModality(Modality.APPLICATION_MODAL);
+           // addWidgetStage.initOwner(____________.getScene().getWindow());
+            addWidgetStage.show();
 
         } catch (Exception ex) {
             Logger.getLogger(DashboardApplication.class.getName()).log(Level.SEVERE, null, ex);
@@ -130,15 +124,18 @@ public class FXMLDashboardController implements Initializable {
         addWidgetStage.setScene(sceneAddWidget);
         addWidgetStage.initModality(Modality.APPLICATION_MODAL);
         addWidgetStage.showAndWait();*/
-        System.out.println("hgfdxhgc");
-        /*Parent root;
-        addWidgetStage = new Stage();
-        root = FXMLLoader.load(getClass().getResource("FXMLAddWidget.fxml"));
-        addWidgetStage.setScene(new Scene(root));
-        addWidgetStage.initModality(Modality.APPLICATION_MODAL);
-       // addWidgetStage.initOwner(____________.getScene().getWindow());
-        addWidgetStage.show();
-        */
+        try {
+            System.out.println("hgfdxhgc");
+            Parent root;
+            addWidgetStage = new Stage();
+            root = FXMLLoader.load(getClass().getResource("FXMLAddWidget.fxml"));
+            addWidgetStage.setScene(new Scene(root));
+            addWidgetStage.initModality(Modality.APPLICATION_MODAL);
+           // addWidgetStage.initOwner(____________.getScene().getWindow());
+            addWidgetStage.show();
+        } catch (Exception ex) {
+            Logger.getLogger(DashboardApplication.class.getName()).log(Level.SEVERE, null, ex);
+        }   
         //addWidgetStage.initOwner(primaryStage);
         //addWidgetStage.showAndWait();
     }
