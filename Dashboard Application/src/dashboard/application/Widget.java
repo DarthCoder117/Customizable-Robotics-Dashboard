@@ -9,24 +9,17 @@ package dashboard.application;
  *
  * @author Brennan
  */
-public class BaseWidgetAdapter {
+public class Widget extends BaseWidgetAdapter {
     
     // Fields
-    private String widgetId;
-    private String widgetType;
+    
+    
     
     // Constructor
-    public BaseWidgetAdapter() {
-        
-    }
- 
-    // Setters and Getters
-    public void setId(String id) {
-        widgetId = id;
+    public Widget() {
+    
     }
     
-    public void setWidgetType(String type) {
-        widgetType = type;
-    }
+    
     
 }
