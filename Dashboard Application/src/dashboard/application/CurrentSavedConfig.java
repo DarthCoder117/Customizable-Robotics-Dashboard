@@ -34,10 +34,25 @@ public class CurrentSavedConfig {
 
     }
 
-    // Load configuration from storage
+    // Method loadConfig() loads configuration from storage
     public void loadConfig() {
+        
+        // Call read() to load last saved widget config records
+        try {
+            read();
+        } catch (ClassNotFoundException e) {
+            
+        }    
 
     }
+    
+    // Method saveConfig() saves configuration to storage
+    public void saveConfig(WidgetRecord[] arrWidgetRecords) {
+        
+        // Write to file
+        write(arrWidgetRecords);
+    }
+    
 
     // Read the saved Widget records from file
     // Method to retrieve High Score Records from file
