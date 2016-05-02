@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="340.0" prefWidth="445.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="dashboard.application.FXMLAboutController">
+<AnchorPane id="AnchorPane" prefHeight="340.0" prefWidth="445.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.application.FXMLAboutController">
    <children>
       <HBox layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="445.0" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
-      <TextField layoutX="29.0" layoutY="80.0" prefHeight="25.0" prefWidth="149.0" text="Version 1.0" />
+      <Text layoutX="26.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Version: " />
+      <Text layoutX="83.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1.0" />
+      <Text layoutX="26.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Info:" />
+      <Text layoutX="69.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" />
+      <Text layoutX="234.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" />
    </children>
 </AnchorPane>
