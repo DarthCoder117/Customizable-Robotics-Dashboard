@@ -17,6 +17,7 @@ public class WidgetRecord {
     public String WidgetType;
     public boolean IsDisplayed;
     public String LastDisplayedValue;
+    public boolean editingEnabled;
    
     
 }

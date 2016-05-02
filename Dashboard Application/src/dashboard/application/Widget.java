@@ -12,14 +12,12 @@ package dashboard.application;
 public class Widget extends BaseWidgetAdapter {
     
     // Fields
-    
+    public String LastDisplayedValue;
     
     
     // Constructor
     public Widget() {
     
     }
-    
-    
-    
+
 }

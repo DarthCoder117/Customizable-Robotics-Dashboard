@@ -13,6 +13,8 @@ public class BaseWidgetAdapter {
     
     // Fields
     private String widgetId;
+    private boolean isDisplayed;
+    private String name;
     private String widgetType;
     
     // Constructor
@@ -27,6 +29,30 @@ public class BaseWidgetAdapter {
     
     public void setWidgetType(String type) {
         widgetType = type;
+    }
+    
+    public void setWidgetName(String name) {
+        this.name = name;
+    }
+    
+    public void setIsDisplayed(boolean bIsDisplayed) {
+        isDisplayed = bIsDisplayed;
+    }
+    
+    public String getId() {
+        return widgetId;
+    }
+    
+    public String getWidgetType() {
+        return widgetType;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public boolean getIsDisplayed() {
+        return isDisplayed;
     }
     
 }
