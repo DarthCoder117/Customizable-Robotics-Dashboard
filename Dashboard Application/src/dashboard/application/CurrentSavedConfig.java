@@ -16,6 +16,7 @@ import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import models.ConnectionInfoRecord;
 import models.WidgetRecord;
 import org.json.JSONArray;
 
@@ -39,7 +40,7 @@ public class CurrentSavedConfig {
         
         // Call read() to load last saved widget config records
         try {
-            read();
+            readWidgetRecords();
         } catch (ClassNotFoundException e) {
             
         }    
@@ -50,13 +51,12 @@ public class CurrentSavedConfig {
     public void saveConfig(WidgetRecord[] arrWidgetRecords) {
         
         // Write to file
-        write(arrWidgetRecords);
+        writeWidgetRecords(arrWidgetRecords);
     }
     
 
     // Read the saved Widget records from file
-    // Method to retrieve High Score Records from file
-    public ArrayList<WidgetRecord> read() throws ClassNotFoundException {
+    public ArrayList<WidgetRecord> readWidgetRecords() throws ClassNotFoundException {
         ObjectInputStream input;
         String fileName = "WidgetRecordListFile" + ".srl";
         WidgetRecord[] arrWidgetRecords = null;
@@ -109,7 +109,7 @@ public class CurrentSavedConfig {
     }
 
     // Write the current Widget Records to file
-    public void write(WidgetRecord[] arrWidgetRecords){
+    public void writeWidgetRecords(WidgetRecord[] arrWidgetRecords){
         //Person myPersonObject = new Person();
         //myPersonObject.setA(432);
         String fileName = "WidgetRecordListFile" + ".srl";
@@ -144,6 +144,107 @@ public class CurrentSavedConfig {
             FileOutputStream fos = new FileOutputStream(widgetRecordListFile.getAbsolutePath());
             ObjectOutputStream ois = new ObjectOutputStream(fos);
             ois.writeObject(gson.toJson(arrWidgetRecords));
+            ois.close();
+            fos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    // Read Method for the user Connection info
+    public ConnectionInfoRecord readConnectionInfo() throws ClassNotFoundException {
+        ObjectInputStream input;
+        String fileName = "ConnectionRecordListFile" + ".txt";
+        //WidgetRecord[] arrWidgetRecords = null;
+        //ArrayList<WidgetRecord> widgetRecordList = null;
+        ConnectionInfoRecord connectionRecord = null;
+
+        File connectionRecordListFile = new File(fileName);
+
+        if (!connectionRecordListFile.exists()) {
+            try {
+                connectionRecordListFile.createNewFile();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        } else {
+
+        }
+
+        try {
+            //input = new ObjectInputStream(new FileInputStream(new File(new File(getFilesDir(),"")+File.separator+filename)));
+            //Person myPersonObject = (Person) input.readObject();
+            //Log.v("serialization","Person a="+myPersonObject.getA());
+            FileInputStream fis = new FileInputStream(connectionRecordListFile.getAbsolutePath());
+            ObjectInputStream ois = new ObjectInputStream(fis);
+
+            String jsonArray = (String) ois.readObject();
+
+            JSONArray jArray = new JSONArray(jsonArray);
+
+            // New instance of Gson
+            gson = new Gson();
+            
+            connectionRecord = gson.fromJson(jsonArray, ConnectionInfoRecord.class);
+
+            //arrWidgetRecords = new WidgetRecord[jArray.length()];
+
+            //arrWidgetRecords = gson.fromJson(jsonArray, WidgetRecord[].class);
+
+            //widgetRecordList = new ArrayList<WidgetRecord>(Arrays.asList(arrWidgetRecords));
+
+            ois.close();
+            fis.close();
+        } catch (StreamCorruptedException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return connectionRecord;
+    }
+    
+    // Write the current Widget Records to file
+    public void writeConnectionInfo(ConnectionInfoRecord connectionRecord){
+        //Person myPersonObject = new Person();
+        //myPersonObject.setA(432);
+        String fileName = "ConnectionRecordListFile" + ".txt";
+        //ObjectOutput out = null;
+
+        // New instance of Gson
+        gson = new Gson();
+
+        File connectionRecordListFile = new File(fileName);
+
+        connectionRecordListFile.delete();
+
+        if (!connectionRecordListFile.exists()) {
+            try {
+                connectionRecordListFile.createNewFile();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        } else {
+            connectionRecordListFile.delete();
+            try {
+                connectionRecordListFile.createNewFile();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+
+        try {
+
+            FileOutputStream fos = new FileOutputStream(connectionRecordListFile.getAbsolutePath());
+            ObjectOutputStream ois = new ObjectOutputStream(fos);
+            ois.writeObject(gson.toJson(connectionRecord));
             ois.close();
             fos.close();
         } catch (FileNotFoundException e) {

@@ -9,15 +9,6 @@ package models;
  *
  * @author Brennan
  */
-public class WidgetRecord {
-    
-    // Fields
-    public String id;
-    public String name;
-    public String widgetType;
-    public boolean isDisplayed;
-    public String lastDisplayedValue;
-    public boolean editingEnabled;
-   
+public class ConnectionInfoRecord {
     
 }
