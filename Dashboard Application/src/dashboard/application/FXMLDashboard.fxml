@@ -44,8 +44,11 @@
             </MenuBar>
          </children>
       </HBox>
-      <Text layoutX="101.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yout Text Here" />
-      <ProgressBar layoutX="90.0" layoutY="216.0" prefWidth="200.0" progress="0.0" />
-      <Circle fill="DODGERBLUE" layoutX="126.0" layoutY="359.0" radius="36.0" stroke="BLACK" strokeType="INSIDE" />
+      <Text layoutX="63.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sensor Reading (meters):" wrappingWidth="154.13671875" />
+      <Text layoutX="63.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Motor Power:" wrappingWidth="154.13671875" />
+      <Text layoutX="63.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arm Activated:" />
+      <TextField layoutX="344.0" layoutY="95.0" />
+      <ProgressBar layoutX="344.0" layoutY="161.0" prefWidth="200.0" progress="0.0" />
+      <Circle fill="#ff3c1f" layoutX="364.0" layoutY="233.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </AnchorPane>
