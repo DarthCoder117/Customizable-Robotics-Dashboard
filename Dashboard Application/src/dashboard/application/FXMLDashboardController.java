@@ -160,6 +160,23 @@ public class FXMLDashboardController implements Initializable {
             Logger.getLogger(DashboardApplication.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }
+    
+    @FXML
+    private void handleFileMenuActionConnection(ActionEvent event) {
+        
+        try {
+            Parent root;
+            addWidgetStage = new Stage();
+            root = FXMLLoader.load(getClass().getResource("FXMLConnectionInfo.fxml"));
+            addWidgetStage.setScene(new Scene(root));
+            addWidgetStage.initModality(Modality.APPLICATION_MODAL);
+            addWidgetStage.setTitle("User Connection");
+            addWidgetStage.show();
+        } catch (Exception ex) {
+            Logger.getLogger(DashboardApplication.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+        
+    }
 
     @FXML
     private void handleFileMenuActionFile(ActionEvent event) {

@@ -35,6 +35,11 @@
                         <MenuItem id="item_delete_widget" mnemonicParsing="false" onAction="#handleFileMenuActionDeleteWidget" text="Delete Widget" />
                   </items>
                 </Menu>
+                  <Menu mnemonicParsing="false" text="Connection">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleFileMenuActionConnection" text="My Connection" />
+                    </items>
+                  </Menu>
               </menus>
             </MenuBar>
          </children>
