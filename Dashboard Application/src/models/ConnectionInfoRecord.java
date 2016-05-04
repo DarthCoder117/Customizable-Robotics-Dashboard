@@ -11,4 +11,10 @@ package models;
  */
 public class ConnectionInfoRecord {
     
+    // Fields
+    public String ipAddress;
+    public boolean isHost;
+    public boolean isClient;
+    public boolean hasPromptedUser;
+    
 }

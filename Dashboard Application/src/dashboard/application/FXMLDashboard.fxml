@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -37,5 +39,8 @@
             </MenuBar>
          </children>
       </HBox>
+      <Text layoutX="101.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yout Text Here" />
+      <ProgressBar layoutX="90.0" layoutY="216.0" prefWidth="200.0" progress="0.0" />
+      <Circle fill="DODGERBLUE" layoutX="126.0" layoutY="359.0" radius="36.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </AnchorPane>
