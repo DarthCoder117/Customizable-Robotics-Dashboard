@@ -69,6 +69,9 @@ public class FXMLAddWidgetController implements Initializable {
     @FXML
     private void handleActionAddWidgets(ActionEvent event) {
         System.out.println("Add Widgets");
+        
+        
+        
     }
     
 }

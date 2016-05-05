@@ -92,6 +92,8 @@ public class DashboardApplication extends Application {
         launch(args);
     }
     
+    
+    /*
     private void gotoAbout() {
         try {
             replaceSceneContent("FXMLAbout.fxml");
@@ -113,5 +115,6 @@ public class DashboardApplication extends Application {
         primaryStage.sizeToScene();
         return page;
     }
+*/
     
 }
