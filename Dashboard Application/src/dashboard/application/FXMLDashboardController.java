@@ -29,21 +29,15 @@ import javafx.stage.Modality;
  *
  * @author Brennan
  */
-
-
-public class FXMLDashboardController implements Initializable {
-    
-    // Fields
+public class FXMLDashboardController implements Initializable 
+{
+    @FXML private AnchorPane mainWidgetArea;
     public Stage primaryStage;
-    public Stage addWidgetStage;
-    public Scene sceneAddWidget;
 
     public FXMLDashboardController()
     {
         
     }
-    
-    @FXML private AnchorPane anchorPane;
     
     /**
      * Initializes the controller class.
@@ -51,133 +45,155 @@ public class FXMLDashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        Button btn = new Button("Text Button");
-        anchorPane.getChildren().add(btn);
+        
     }    
     
     
-    public void setPrimaryStage(Stage stage) {
+    public void setPrimaryStage(Stage stage) 
+    {
         this.primaryStage = stage;
     }
     
     @FXML
-    private void handleFileMenuActionSaveConfig(ActionEvent event) {
+    private void handleFileMenuActionSaveConfig(ActionEvent event) 
+    {
         // do stuff if menu is clicked
         System.out.println("File Menu Item Save Config");
     }
 
     @FXML
-    private void handleFileMenuActionLoadConfig(ActionEvent event) {
+    private void handleFileMenuActionLoadConfig(ActionEvent event)
+    {
         
         System.out.println("Load Config");
     }
     
     
     @FXML
-    private void handleFileMenuActionExit(ActionEvent event) {
-        
+    private void handleFileMenuActionExit(ActionEvent event) 
+    {
         // Exit the application
         System.exit(0);
     }
 
     @FXML
-    private void handleFileMenuActionLockEdit(ActionEvent event) {
+    private void handleFileMenuActionLockEdit(ActionEvent event) 
+    {
         
         System.out.println("Lock Edit");
     }
     
     @FXML
-    private void handleFileMenuActionUnlockEdit(ActionEvent event) {
+    private void handleFileMenuActionUnlockEdit(ActionEvent event) 
+    {
         
         System.out.println("Unlock Edit");
     }
     
     @FXML
-    private void handleFileMenuActionHelp(ActionEvent event) {
-        
+    private void handleFileMenuActionHelp(ActionEvent event) 
+    {
         System.out.println("Help");
         
-        try {
+        try 
+        {
             Parent root;
-            addWidgetStage = new Stage();
+            Stage stage = new Stage();
             root = FXMLLoader.load(getClass().getResource("FXMLHelp.fxml"));
-            addWidgetStage.setScene(new Scene(root));
-            addWidgetStage.initModality(Modality.APPLICATION_MODAL);
-            addWidgetStage.setTitle("Help");
-            addWidgetStage.show();
-        } catch (Exception ex) {
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Help");
+            stage.show();
+        } 
+        catch (Exception ex) 
+        {
             Logger.getLogger(DashboardApplication.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }
     
     @FXML
-    private void handleFileMenuActionAbout(ActionEvent event) {
-        
+    private void handleFileMenuActionAbout(ActionEvent event) 
+    {
        // New Scene About dialog
-       try {
-        
+       try 
+       {
             Parent root;
-            addWidgetStage = new Stage();
+            Stage stage = new Stage();
             root = FXMLLoader.load(getClass().getResource("FXMLAbout.fxml"));
-            addWidgetStage.setScene(new Scene(root));
-            addWidgetStage.setTitle("About");
-            addWidgetStage.initModality(Modality.APPLICATION_MODAL);
-            addWidgetStage.show();
+            stage.setScene(new Scene(root));
+            stage.setTitle("About");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
 
-        } catch (Exception ex) {
+        } 
+       catch (Exception ex) 
+        {
             Logger.getLogger(DashboardApplication.class.getName()).log(Level.SEVERE, null, ex);
         }   
-            
     }
 
     @FXML
-    private void handleFileMenuActionAddWidget(ActionEvent event) {
-     
-        try {
-            System.out.println("Add Widget");
-            Parent root;
-            addWidgetStage = new Stage();
-            root = FXMLLoader.load(getClass().getResource("FXMLAddWidget.fxml"));
-            addWidgetStage.setScene(new Scene(root));
-            addWidgetStage.initModality(Modality.APPLICATION_MODAL);
-            addWidgetStage.setTitle("Add Widget");
-            addWidgetStage.show();
-        } catch (Exception ex) {
+    private void handleFileMenuActionAddWidget(ActionEvent event) 
+    {
+        try 
+        {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAddWidget.fxml"));
+            
+            //Create controller manually.
+            FXMLAddWidgetController controller = new FXMLAddWidgetController(mainWidgetArea);
+            loader.setController(controller);
+            Parent root = loader.load();
+            
+            //Show dialog
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Add Widget");
+            stage.show();
+        } 
+        catch (Exception ex) 
+        {
             Logger.getLogger(DashboardApplication.class.getName()).log(Level.SEVERE, null, ex);
         }   
-       
     }
 
     @FXML
-    private void handleFileMenuActionDeleteWidget(ActionEvent event) {
-            
+    private void handleFileMenuActionDeleteWidget(ActionEvent event) 
+    {
         System.out.println("Delete Widget");
         
-        try {
+        try 
+        {
             Parent root;
-            addWidgetStage = new Stage();
+            Stage stage = new Stage();
             root = FXMLLoader.load(getClass().getResource("FXMLDeleteWidget.fxml"));
-            addWidgetStage.setScene(new Scene(root));
-            addWidgetStage.initModality(Modality.APPLICATION_MODAL);
-            addWidgetStage.setTitle("Delete Widget");
-            addWidgetStage.show();
-        } catch (Exception ex) {
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Delete Widget");
+            stage.show();
+        } 
+        catch (Exception ex)
+        {
             Logger.getLogger(DashboardApplication.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }
     
     @FXML
-    private void handleFileMenuActionConnection(ActionEvent event) {
+    private void handleFileMenuActionConnection(ActionEvent event)
+    {
         
-        try {
+        try
+        {
             Parent root;
-            addWidgetStage = new Stage();
+            Stage stage = new Stage();
             root = FXMLLoader.load(getClass().getResource("FXMLConnectionInfo.fxml"));
-            addWidgetStage.setScene(new Scene(root));
-            addWidgetStage.initModality(Modality.APPLICATION_MODAL);
-            addWidgetStage.setTitle("User Connection");
-            addWidgetStage.show();
-        } catch (Exception ex) {
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("User Connection");
+            stage.show();
+        } 
+        catch (Exception ex) 
+        {
             Logger.getLogger(DashboardApplication.class.getName()).log(Level.SEVERE, null, ex);
         }   
         

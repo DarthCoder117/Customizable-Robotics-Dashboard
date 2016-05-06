@@ -26,3 +26,11 @@
 *.exe
 *.out
 *.app
+
+Dashboard Application/nbproject/private/*
+Dashboard Application/build/*
+Dashboard Application/nbbuild/*
+Dashboard Application/dist/*
+Dashboard Application/nbdist/*
+Dashboard Application/nbactions.xml
+Dashboard Application/.nb-gradle/*

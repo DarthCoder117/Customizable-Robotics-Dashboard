@@ -10,6 +10,16 @@
 
 <AnchorPane id="anchorPane" fx:id="anchorPane" prefHeight="618.0" prefWidth="852.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.application.FXMLDashboardController">
    <children>
+      <AnchorPane id="mainWidgetArea" fx:id="mainWidgetArea" layoutX="28.0" layoutY="27.0" prefHeight="591.0" prefWidth="852.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text layoutX="64.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sensor Reading (meters):" wrappingWidth="154.13671875" />
+            <Text layoutX="64.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Motor Power:" wrappingWidth="154.13671875" />
+            <Text layoutX="64.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arm Activated:" />
+            <TextField layoutX="238.0" layoutY="90.0" />
+            <ProgressBar layoutX="238.0" layoutY="164.0" prefWidth="200.0" progress="0.0" />
+            <Circle fill="#ff3c1f" layoutX="258.0" layoutY="240.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </AnchorPane>
       <HBox layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <MenuBar id="menu_bar" layoutY="2.0" prefHeight="25.0" prefWidth="852.0" HBox.hgrow="ALWAYS">
@@ -44,11 +54,5 @@
             </MenuBar>
          </children>
       </HBox>
-      <Text layoutX="63.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sensor Reading (meters):" wrappingWidth="154.13671875" />
-      <Text layoutX="63.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Motor Power:" wrappingWidth="154.13671875" />
-      <Text layoutX="63.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arm Activated:" />
-      <TextField layoutX="344.0" layoutY="95.0" />
-      <ProgressBar layoutX="344.0" layoutY="161.0" prefWidth="200.0" progress="0.0" />
-      <Circle fill="#ff3c1f" layoutX="364.0" layoutY="233.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </AnchorPane>

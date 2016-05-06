@@ -10,32 +10,43 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
  *
  * @author Brennan
  */
-public class FXMLAddWidgetController implements Initializable {
-    
-    // Fields 
+public class FXMLAddWidgetController implements Initializable
+{
     private boolean isTextChecked, isProgressChecked, isLEDChecked = false;
+    
+    private AnchorPane mainWidgetArea;
 
+    FXMLAddWidgetController(AnchorPane mainWidgetArea)
+    {
+        this.mainWidgetArea = mainWidgetArea;
+    }
+    
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) 
+    {
         // TODO
     }    
-    
             
     @FXML
-    private void handleActionTextFieldCheck(ActionEvent event) {
-        
-        if (isTextChecked == false) {
+    private void handleActionTextFieldCheck(ActionEvent event) 
+    {
+        if (isTextChecked == false)
+        {
             isTextChecked = true;
-        } else if (isTextChecked) {
+        } 
+        else if (isTextChecked)
+        {
             isTextChecked = false;
         }
         
@@ -43,11 +54,14 @@ public class FXMLAddWidgetController implements Initializable {
     }
     
     @FXML
-    private void handleActionProgressBarCheck(ActionEvent event) {
-        
-        if (isProgressChecked == false) {
+    private void handleActionProgressBarCheck(ActionEvent event) 
+    {
+        if (isProgressChecked == false)
+        {
             isProgressChecked = true;
-        } else if (isProgressChecked) {
+        } 
+        else if (isProgressChecked) 
+        {
             isProgressChecked = false;
         }
         
@@ -55,11 +69,15 @@ public class FXMLAddWidgetController implements Initializable {
     }
     
     @FXML
-    private void handleActionLEDCheck(ActionEvent event) {
+    private void handleActionLEDCheck(ActionEvent event) 
+    {
         
-        if (isLEDChecked == false) {
+        if (isLEDChecked == false) 
+        {
             isLEDChecked = true;
-        } else if (isLEDChecked) {
+        } 
+        else if (isLEDChecked) 
+        {
             isLEDChecked = false;
         }
         
@@ -67,11 +85,13 @@ public class FXMLAddWidgetController implements Initializable {
     }
     
     @FXML
-    private void handleActionAddWidgets(ActionEvent event) {
+    private void handleActionAddWidgets(ActionEvent event)
+    {
         System.out.println("Add Widgets");
         
-        
-        
+        Button btn = new Button("Test Button");
+        btn.setLayoutX(100.0);
+        btn.setLayoutY(100.0);
+        mainWidgetArea.getChildren().add(btn);
     }
-    
 }
