@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.shape.*?>
@@ -9,14 +10,33 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="70.0" prefWidth="310.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <CheckBox layoutX="37.0" layoutY="41.0" mnemonicParsing="false" onAction="#handleActionTextFieldCheck" text="Text Field" />
-      <CheckBox layoutX="37.0" layoutY="104.0" mnemonicParsing="false" onAction="#handleActionProgressBarCheck" text="Progress Bar" />
-      <CheckBox layoutX="37.0" layoutY="165.0" mnemonicParsing="false" onAction="#handleActionLEDCheck" text="LED" />
-      <ProgressBar layoutX="164.0" layoutY="103.0" prefWidth="200.0" progress="0.0" />
-      <Circle fill="#1fff40" layoutX="148.0" layoutY="176.0" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
-      <Text layoutX="150.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Text Here" />
-      <Button layoutX="37.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleActionAddWidgets" prefHeight="25.0" prefWidth="155.0" text="Add Widgets" />
+      <VBox layoutX="231.0" layoutY="58.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="45.0" spacing="5.0">
+               <children>
+                  <Label text="Widget Type" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets right="15.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ChoiceBox id="widgetTypeSelect" fx:id="widgetTypeSelect" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="15.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="BOTTOM_CENTER" spacing="5.0">
+               <children>
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleActionAddWidgets" text="Ok" HBox.hgrow="ALWAYS" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Cancel" onAction="#handleActionCancel" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
 </AnchorPane>

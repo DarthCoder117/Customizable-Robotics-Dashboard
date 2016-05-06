@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -20,9 +21,9 @@ import javafx.scene.layout.AnchorPane;
  */
 public class FXMLAddWidgetController implements Initializable
 {
-    private boolean isTextChecked, isProgressChecked, isLEDChecked = false;
+    private AnchorPane mainWidgetArea;//Main widget area from DashboardController
     
-    private AnchorPane mainWidgetArea;
+    @FXML private ChoiceBox widgetTypeSelect;
 
     FXMLAddWidgetController(AnchorPane mainWidgetArea)
     {
@@ -35,63 +36,27 @@ public class FXMLAddWidgetController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        // TODO
+        //TODO: Initialize choice box with all widget types.
     }    
-            
-    @FXML
-    private void handleActionTextFieldCheck(ActionEvent event) 
-    {
-        if (isTextChecked == false)
-        {
-            isTextChecked = true;
-        } 
-        else if (isTextChecked)
-        {
-            isTextChecked = false;
-        }
-        
-        System.out.println("Text Checked: " + String.valueOf(isTextChecked));
-    }
-    
-    @FXML
-    private void handleActionProgressBarCheck(ActionEvent event) 
-    {
-        if (isProgressChecked == false)
-        {
-            isProgressChecked = true;
-        } 
-        else if (isProgressChecked) 
-        {
-            isProgressChecked = false;
-        }
-        
-        System.out.println("Progress Checked: " + String.valueOf(isProgressChecked));
-    }
-    
-    @FXML
-    private void handleActionLEDCheck(ActionEvent event) 
-    {
-        
-        if (isLEDChecked == false) 
-        {
-            isLEDChecked = true;
-        } 
-        else if (isLEDChecked) 
-        {
-            isLEDChecked = false;
-        }
-        
-        System.out.println("LED Checked: " + String.valueOf(isLEDChecked));
-    }
     
     @FXML
     private void handleActionAddWidgets(ActionEvent event)
     {
         System.out.println("Add Widgets");
         
+        //TODO: Create widget based on choice box and close the dialog
+        
         Button btn = new Button("Test Button");
         btn.setLayoutX(100.0);
         btn.setLayoutY(100.0);
         mainWidgetArea.getChildren().add(btn);
+    }
+    
+    @FXML
+    private void handleActionCancel(ActionEvent event)
+    {
+        System.out.println("Cancel");
+        
+        //TODO: Close this dialog...
     }
 }

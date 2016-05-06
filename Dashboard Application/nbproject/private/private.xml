@@ -3,10 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/DashboardApplication.java</file>
+            <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/FXMLAddWidget.fxml</file>
             <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/FXMLDashboard.fxml</file>
             <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/FXMLAddWidgetController.java</file>
-            <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/FXMLConnectionInfo.fxml</file>
             <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/FXMLDashboardController.java</file>
         </group>
     </open-files>
