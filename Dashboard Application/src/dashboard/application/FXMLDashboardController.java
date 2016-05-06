@@ -21,6 +21,7 @@ import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.stage.Modality;
 
 /**
@@ -42,12 +43,16 @@ public class FXMLDashboardController implements Initializable {
         
     }
     
+    @FXML private AnchorPane anchorPane;
+    
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public void initialize(URL url, ResourceBundle rb) 
+    {
+        Button btn = new Button("Text Button");
+        anchorPane.getChildren().add(btn);
     }    
     
     

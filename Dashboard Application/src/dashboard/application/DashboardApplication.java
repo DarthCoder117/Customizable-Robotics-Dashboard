@@ -33,14 +33,17 @@ public class DashboardApplication extends Application {
         
         primaryStage = stage;
         
-        try {
-        
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("FXMLDashboard.fxml"));
-        Parent root = loader.load();
-        ((FXMLDashboardController) loader.getController()).setPrimaryStage(primaryStage);
-        
-        } catch (Exception e) {
+        try 
+        {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("FXMLDashboard.fxml"));
+            Parent root = loader.load();
+            ((FXMLDashboardController) loader.getController()).setPrimaryStage(primaryStage);
+            
+            
+        } 
+        catch (Exception e) 
+        {
             
         }
         /*

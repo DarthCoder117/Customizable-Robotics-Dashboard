@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Brennan/Documents/Spring%20Quarter%20Classes%202016/CS%20380/Robotics_Dashboard_Project/GitHub/Customizable-Robotics-Dashboard/Dashboard%20Application/src/models/WidgetRecord.java</file>
-            <file>file:/C:/Users/Brennan/Documents/Spring%20Quarter%20Classes%202016/CS%20380/Robotics_Dashboard_Project/GitHub/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/CurrentSavedConfig.java</file>
-            <file>file:/C:/Users/Brennan/Documents/Spring%20Quarter%20Classes%202016/CS%20380/Robotics_Dashboard_Project/GitHub/Customizable-Robotics-Dashboard/Dashboard%20Application/src/models/ConnectionInfoRecord.java</file>
+            <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/DashboardApplication.java</file>
+            <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/FXMLDashboard.fxml</file>
+            <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/FXMLAddWidgetController.java</file>
+            <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/FXMLDashboardController.java</file>
         </group>
     </open-files>
 </project-private>
