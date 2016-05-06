@@ -3,21 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package models;
+package dashboard.application;
 
 /**
  *
  * @author Brennan
  */
-public class WidgetRecord {
+public class ProgressBarWidget extends BaseWidgetAdapter {
     
     // Fields
-    public String ID;
-    public String Name;
-    public String WidgetType;
-    public boolean IsDisplayed;
     public String LastDisplayedValue;
-    public boolean editingEnabled;
-   
     
 }

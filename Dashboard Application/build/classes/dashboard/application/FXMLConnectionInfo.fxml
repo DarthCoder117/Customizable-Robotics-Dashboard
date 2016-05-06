@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.application.FXMLConnectionInfoController">
+   <children>
+      <HBox prefHeight="33.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <MenuBar prefHeight="25.0" prefWidth="608.0" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <TextField layoutX="186.0" layoutY="62.0" onAction="#ipAddressAction" />
+      <Text layoutX="48.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IP Address:" wrappingWidth="88.13671875" />
+      <Text layoutX="48.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client:" wrappingWidth="88.13671875" />
+      <Text layoutX="48.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Server:" wrappingWidth="88.13671875" />
+      <CheckBox layoutX="186.0" layoutY="111.0" mnemonicParsing="false" onAction="#checkClientAction" text="Client" />
+      <CheckBox layoutX="186.0" layoutY="142.0" mnemonicParsing="false" onAction="#checkServerAction" text="Server" />
+      <Button layoutX="48.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleActionSaveConfig" prefHeight="25.0" prefWidth="134.0" text="Save Configuration" />
+   </children>
+</AnchorPane>

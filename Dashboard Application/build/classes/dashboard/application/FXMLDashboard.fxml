@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -33,9 +35,20 @@
                         <MenuItem id="item_delete_widget" mnemonicParsing="false" onAction="#handleFileMenuActionDeleteWidget" text="Delete Widget" />
                   </items>
                 </Menu>
+                  <Menu mnemonicParsing="false" text="Connection">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleFileMenuActionConnection" text="My Connection" />
+                    </items>
+                  </Menu>
               </menus>
             </MenuBar>
          </children>
       </HBox>
+      <Text layoutX="63.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sensor Reading (meters):" wrappingWidth="154.13671875" />
+      <Text layoutX="63.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Motor Power:" wrappingWidth="154.13671875" />
+      <Text layoutX="63.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arm Activated:" />
+      <TextField layoutX="344.0" layoutY="95.0" />
+      <ProgressBar layoutX="344.0" layoutY="161.0" prefWidth="200.0" progress="0.0" />
+      <Circle fill="#ff3c1f" layoutX="364.0" layoutY="233.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </AnchorPane>
