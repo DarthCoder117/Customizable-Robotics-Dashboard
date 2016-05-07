@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.Parent;
+import javafx.scene.input.KeyCombination;
 
 /**
  *
@@ -44,9 +45,11 @@ public class DashboardApplication extends Application
             primaryStage.setTitle("Realtime Robotics Dashboard");
             
             //Fullscreen mode
-            if (!DashboardSettings.getFullscreen())
+            if (DashboardSettings.getFullscreen())
             {
                 primaryStage.setFullScreen(true);
+                primaryStage.setFullScreenExitHint("");
+                //primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
             }
 
             primaryStage.show();
