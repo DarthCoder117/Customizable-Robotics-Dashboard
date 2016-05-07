@@ -22,6 +22,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuBar;
+import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 
 /**
@@ -32,6 +34,8 @@ import javafx.stage.Modality;
 public class FXMLDashboardController implements Initializable 
 {
     @FXML private AnchorPane mainWidgetArea;
+    @FXML private MenuBar menuBar;
+    
     public Stage primaryStage;
 
     public FXMLDashboardController()
@@ -45,7 +49,11 @@ public class FXMLDashboardController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        
+        //Hide the menu if required
+        if (!DashboardSettings.getShowMenu())
+        {
+            ((HBox)menuBar.getParent()).getChildren().remove(menuBar);
+        }
     }    
     
     

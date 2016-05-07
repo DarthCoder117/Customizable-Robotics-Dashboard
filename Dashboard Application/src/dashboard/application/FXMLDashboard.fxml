@@ -22,7 +22,7 @@
       </AnchorPane>
       <HBox layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <MenuBar id="menu_bar" layoutY="2.0" prefHeight="25.0" prefWidth="852.0" HBox.hgrow="ALWAYS">
+            <MenuBar id="menu_bar" fx:id="menuBar" layoutY="2.0" prefHeight="25.0" prefWidth="852.0" HBox.hgrow="ALWAYS">
               <menus>
                 <Menu id="menu_file" mnemonicParsing="false" onAction="#handleFileMenuActionFile" text="File">
                   <items>

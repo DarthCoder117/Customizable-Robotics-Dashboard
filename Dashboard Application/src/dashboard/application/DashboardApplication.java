@@ -25,8 +25,11 @@ public class DashboardApplication extends Application
     @Override
     public void start(Stage stage) 
     {
-        primaryStage = stage;
+        //Load settings
+        DashboardSettings.loadSettings();
         
+        //Load main window
+        primaryStage = stage;
         try 
         {
             FXMLLoader loader = new FXMLLoader();
@@ -37,9 +40,14 @@ public class DashboardApplication extends Application
             AnchorPane page = (AnchorPane) FXMLLoader.load(DashboardApplication.class.getResource("FXMLDashboard.fxml"));
             Scene scene = new Scene(page);
             
-            
             primaryStage.setScene(scene);
             primaryStage.setTitle("Realtime Robotics Dashboard");
+            
+            //Fullscreen mode
+            if (!DashboardSettings.getFullscreen())
+            {
+                primaryStage.setFullScreen(true);
+            }
 
             primaryStage.show();
         }
