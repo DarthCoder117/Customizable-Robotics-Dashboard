@@ -9,7 +9,7 @@ package dashboard.application;
  *
  * @author Brennan
  */
-public class LEDWidget extends BaseWidgetAdapter {
+public class LEDWidget extends DataWidget {
     
     // Fields
     public String LastDisplayedValue;

@@ -5,13 +5,31 @@
  */
 package dashboard.application;
 
+import javafx.scene.control.Label;
+
 /**
  *
  * @author Brennan
  */
-public class TextWidget extends BaseWidgetAdapter {
+public class TextWidget extends DataWidget {
     
     // Fields
-    public String LastDisplayedValue;
+    private String lastDisplayedValue;
+    private Label label;
+    
+    
+    // Constructor
+    public TextWidget() {
+        
+        // New Label object
+        label = new Label();
+        // Set the label text
+        label.setText("Default");
+        label.setLayoutX(100.0);
+        label.setLayoutY(100.0);
+        // Add label to children
+        this.getChildren().add(label);
+        
+    }
     
 }

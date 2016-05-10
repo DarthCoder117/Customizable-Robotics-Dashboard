@@ -5,13 +5,16 @@
  */
 package dashboard.application;
 
+import javafx.scene.control.Label;
+
 /**
  *
  * @author Brennan
  */
-public class ProgressBarWidget extends BaseWidgetAdapter {
+public class ProgressBarWidget extends DataWidget {
     
     // Fields
     public String LastDisplayedValue;
+    private Label label;
     
 }

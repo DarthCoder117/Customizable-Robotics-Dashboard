@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -24,6 +25,7 @@ public class FXMLAddWidgetController implements Initializable
     private AnchorPane mainWidgetArea;//Main widget area from DashboardController
     
     @FXML private ChoiceBox widgetTypeSelect;
+    @FXML private Button cancelButton;
 
     FXMLAddWidgetController(AnchorPane mainWidgetArea)
     {
@@ -46,10 +48,17 @@ public class FXMLAddWidgetController implements Initializable
         
         //TODO: Create widget based on choice box and close the dialog
         
-        Button btn = new Button("Test Button");
-        btn.setLayoutX(100.0);
-        btn.setLayoutY(100.0);
-        mainWidgetArea.getChildren().add(btn);
+        //Button btn = new Button("Test Button");
+        //btn.setLayoutX(100.0);
+        //btn.setLayoutY(100.0);
+        
+        // Add Test Text Widget
+        TextWidget textWidget = new TextWidget();
+        
+        mainWidgetArea.getChildren().add(textWidget);
+        // Close the dialog
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
     
     @FXML
@@ -57,6 +66,8 @@ public class FXMLAddWidgetController implements Initializable
     {
         System.out.println("Cancel");
         
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
         //TODO: Close this dialog...
     }
 }

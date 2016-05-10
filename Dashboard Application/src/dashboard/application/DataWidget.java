@@ -6,12 +6,12 @@
 package dashboard.application;
 
 import java.util.Properties;
-import javafx.scene.Parent;
+import javafx.scene.Group;
 
 /**
  * Base class for data display widgets.
  */
-public abstract class DataWidget extends Parent
+public abstract class DataWidget extends Group
 {
     protected Properties widgetProperties = new Properties();
     
