@@ -30,7 +30,7 @@
             <HBox alignment="BOTTOM_CENTER" spacing="5.0">
                <children>
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleActionAddWidgets" text="Ok" HBox.hgrow="ALWAYS" />
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Cancel" onAction="#handleActionCancel" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="cancelButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Cancel" onAction="#handleActionCancel" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
          </children>

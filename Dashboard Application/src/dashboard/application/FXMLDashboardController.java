@@ -206,6 +206,14 @@ public class FXMLDashboardController implements Initializable
         }   
         
     }
+    
+    @FXML
+    private void handleFileMenuActionClear(ActionEvent event) {
+        
+        // Clear the dashboard
+        this.mainWidgetArea.getChildren().clear();
+        
+    }
 
     @FXML
     private void handleFileMenuActionFile(ActionEvent event) {
