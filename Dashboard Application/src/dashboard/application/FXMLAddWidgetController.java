@@ -79,6 +79,8 @@ public class FXMLAddWidgetController implements Initializable
                 
                 // Add Test Text Widget
                 ProgressBarWidget progressWidget = new ProgressBarWidget();
+                progressWidget.setLayoutX(100.0);
+                progressWidget.setLayoutY(100.0);
                 mainWidgetArea.getChildren().add(progressWidget);
                 // Close the dialog
                 stage = (Stage) cancelButton.getScene().getWindow();
