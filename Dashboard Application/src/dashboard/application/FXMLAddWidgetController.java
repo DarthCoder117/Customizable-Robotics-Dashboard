@@ -92,6 +92,8 @@ public class FXMLAddWidgetController implements Initializable
                 
                 // Add Test Text Widget
                 LEDWidget ledWidget = new LEDWidget();
+                ledWidget.setLayoutX(100.0);
+                ledWidget.setLayoutY(100.0);
                 mainWidgetArea.getChildren().add(ledWidget);
                 // Close the dialog
                 stage = (Stage) cancelButton.getScene().getWindow();

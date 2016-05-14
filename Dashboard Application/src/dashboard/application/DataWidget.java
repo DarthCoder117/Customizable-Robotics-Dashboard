@@ -13,6 +13,10 @@ import javafx.scene.Group;
  */
 public abstract class DataWidget extends Group
 {
+
+    static void launch(String[] args) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     protected Properties widgetProperties = new Properties();
     
     ///Gets the value identifier that this widget should display.
