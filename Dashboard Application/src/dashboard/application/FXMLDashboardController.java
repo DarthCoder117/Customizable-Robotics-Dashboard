@@ -6,22 +6,21 @@ package dashboard.application;
  * and open the template in the editor.
  */
 
-import dashboard.application.DashboardApplication;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
@@ -38,6 +37,30 @@ public class FXMLDashboardController implements Initializable
     
     public Stage primaryStage;
 
+    @FXML private CheckMenuItem enableEditModeMenuItem;
+    
+    private boolean editModeEnabled = false;
+    
+    public void SetEditMode(boolean enabled)
+    {
+        editModeEnabled = enabled;
+        
+        //Disable widgets in edit mode.
+        if (enabled)
+        {
+            mainWidgetArea.setDisable(true);
+        }
+        else
+        {
+            mainWidgetArea.setDisable(false);
+        }
+    }
+    
+    public boolean IsInEditMode()
+    {
+        return editModeEnabled;
+    }
+    
     public FXMLDashboardController()
     {
         
@@ -60,6 +83,12 @@ public class FXMLDashboardController implements Initializable
     public void setPrimaryStage(Stage stage) 
     {
         this.primaryStage = stage;
+    }
+    
+    @FXML
+    private void onEditModeMenuAction(ActionEvent event)
+    {
+        SetEditMode(enableEditModeMenuItem.isSelected());
     }
     
     @FXML

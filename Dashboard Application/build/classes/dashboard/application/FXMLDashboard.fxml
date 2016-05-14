@@ -24,8 +24,7 @@
                 </Menu>
                 <Menu id="menu_properties" mnemonicParsing="false" text="Properties">
                   <items>
-                        <MenuItem id="item_lock_editing" mnemonicParsing="false" onAction="#handleFileMenuActionLockEdit" text="Lock Editing" />
-                        <MenuItem id="item_unlock_editing" mnemonicParsing="false" onAction="#handleFileMenuActionUnlockEdit" text="Unlock Editing" />
+                        <CheckMenuItem fx:id="enableEditModeMenuItem" mnemonicParsing="false" onAction="#onEditModeMenuAction" text="Edit Mode Enabled" />
                         <MenuItem id="item_help" mnemonicParsing="false" onAction="#handleFileMenuActionHelp" text="Help" />
                         <MenuItem id="item_about" mnemonicParsing="false" onAction="#handleFileMenuActionAbout" text="About" />
                   </items>
