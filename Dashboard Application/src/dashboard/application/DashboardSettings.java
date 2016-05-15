@@ -41,24 +41,24 @@ public class DashboardSettings
         return Boolean.parseBoolean(properties.getProperty("fullscreen", "false"));
     }
     
-    public void setIpAddress(String ip)
+    public static void setIpAddress(String ip)
     {
         //TODO: Validate ip address
         
         properties.setProperty("ip-address", ip);
     }
     
-    public String getIpAddress()
+    public static String getIpAddress()
     {
         return properties.getProperty("ip-address", "127.0.0.1");
     }
     
-    public void setPort(int port)
+    public static void setPort(int port)
     {
         properties.setProperty("port", String.valueOf(port));
     }
     
-    public int getPort()
+    public static int getPort()
     {
         return Integer.parseInt(properties.getProperty("port", "4309"));
     }

@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.Parent;
-import javafx.scene.input.KeyCombination;
+import edu.cwu.rrdtp.*;
 
 /**
  *
@@ -23,11 +23,23 @@ public class DashboardApplication extends Application
 {
     public Stage primaryStage;
     
+    public static final Connection rrdtpConnection = new Connection();
+    
     @Override
     public void start(Stage stage) 
     {
         //Load settings
         DashboardSettings.loadSettings();
+        
+        //Open connection
+        if (DashboardSettings.getIsServer())
+        {
+            rrdtpConnection.startServer(DashboardSettings.getPort());
+        }
+        else
+        {
+            rrdtpConnection.startClient(DashboardSettings.getIpAddress(), DashboardSettings.getPort());
+        }
         
         //Load main window
         primaryStage = stage;
