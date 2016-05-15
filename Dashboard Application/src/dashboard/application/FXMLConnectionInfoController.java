@@ -10,44 +10,52 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
  *
  * @author Brennan
  */
-public class FXMLConnectionInfoController implements Initializable {
-
+public class FXMLConnectionInfoController implements Initializable 
+{
+    @FXML private TextField ipAddressField;
+    @FXML private CheckBox isServerCheckBox;
+    @FXML private TextField portField;
+    
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public void initialize(URL url, ResourceBundle rb) 
+    {
+        isServerCheckBox.setSelected(DashboardSettings.getIsServer());
+        ipAddressField.setText(DashboardSettings.getIpAddress());
+        portField.setText(String.valueOf(DashboardSettings.getPort()));
     }    
     
     @FXML
-    private void checkClientAction(ActionEvent event) {
-        
-        System.out.println("Client checked");
-    }
-    
-    @FXML
-    private void checkServerAction(ActionEvent event) {
-        
-        System.out.println("Server Checked");
+    private void checkServerAction(ActionEvent event) 
+    {
+        DashboardSettings.setIsServer(isServerCheckBox.isSelected());
     }
 
     @FXML
-    private void ipAddressAction(ActionEvent event) {
-        
-        System.out.println("IP Action");
+    private void ipAddressAction(ActionEvent event) 
+    {
+        DashboardSettings.setIpAddress(ipAddressField.getText());
+    }
+    
+    @FXML
+    private void portAction(ActionEvent event) 
+    {
+       DashboardSettings.setPort(Integer.parseInt(portField.getText()));
     }
     
      @FXML
-    private void handleActionSaveConfig(ActionEvent event) {
-        
-        System.out.println("Save Config");
+    private void handleActionSaveConfig(ActionEvent event) 
+    {
+        DashboardSettings.saveSettings();
     }
-    
 }

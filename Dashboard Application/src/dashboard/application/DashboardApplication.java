@@ -78,5 +78,8 @@ public class DashboardApplication extends Application
     public static void main(String[] args) 
     {
         launch(args);
+        
+        //Close connection when done
+        rrdtpConnection.close();
     }
 }
