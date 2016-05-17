@@ -23,7 +23,7 @@ public class DashboardApplication extends Application
 {
     public Stage primaryStage;
     
-    public static final Connection rrdtpConnection = new Connection();
+    //public static final Connection rrdtpConnection = new Connection();
     
     @Override
     public void start(Stage stage) 
@@ -34,11 +34,11 @@ public class DashboardApplication extends Application
         //Open connection
         if (DashboardSettings.getIsServer())
         {
-            rrdtpConnection.startServer(DashboardSettings.getPort());
+            //rrdtpConnection.startServer(DashboardSettings.getPort());
         }
         else
         {
-            rrdtpConnection.startClient(DashboardSettings.getIpAddress(), DashboardSettings.getPort());
+            //rrdtpConnection.startClient(DashboardSettings.getIpAddress(), DashboardSettings.getPort());
         }
         
         //Load main window
@@ -80,6 +80,6 @@ public class DashboardApplication extends Application
         launch(args);
         
         //Close connection when done
-        rrdtpConnection.close();
+        //rrdtpConnection.close();
     }
 }

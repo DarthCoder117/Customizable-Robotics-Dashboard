@@ -27,10 +27,11 @@ public class ProgressBarWidget extends DataWidget {
 
             // New Label object
             final Label label = new Label();
-            label.setText("PROGRESS:" );
+            label.setText("PROGRESS:    " );
 
             final ProgressBar pb = new ProgressBar();
-            pb.setProgress(BASELINE_OFFSET_SAME_AS_HEIGHT);
+            //pb.setProgress(BASELINE_OFFSET_SAME_AS_HEIGHT);
+            pb.setProgress(0.5);
             final HBox hb = new HBox();
             hb.setAlignment(Pos.CENTER);
             hb.getChildren().addAll(label, pb);

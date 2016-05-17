@@ -6,10 +6,10 @@
 package dashboard.application;
 
 import javafx.geometry.Pos;
-import static javafx.scene.Node.BASELINE_OFFSET_SAME_AS_HEIGHT;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 
 /**
@@ -24,9 +24,10 @@ public class LEDWidget extends DataWidget {
 
             // New Label object
             final Label label = new Label();
-            label.setText("LED:" );
-
-            final Circle led = new Circle();
+            label.setText("LED:     " );
+            
+            final Circle led = new Circle(10, 10, 20);
+            led.setFill(Color.RED);
             final HBox hb = new HBox();
             hb.setAlignment(Pos.CENTER);
             hb.getChildren().addAll(label, led);
@@ -35,6 +36,6 @@ public class LEDWidget extends DataWidget {
     }
 
     public static void main(String[] args) {
-        DataWidget.launch(args);
+        LEDWidget.launch(args);
     }
 }

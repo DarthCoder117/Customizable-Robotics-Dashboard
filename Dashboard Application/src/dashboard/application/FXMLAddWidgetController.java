@@ -69,8 +69,10 @@ public class FXMLAddWidgetController implements Initializable
                 // Add Test Text Widget
                 TextWidget textWidget = new TextWidget();
                 mainWidgetArea.getChildren().add(textWidget);
+                
                 // Close the dialog
                 stage = (Stage) cancelButton.getScene().getWindow();
+              
                 stage.close();
                 
                 break;
@@ -80,7 +82,7 @@ public class FXMLAddWidgetController implements Initializable
                 // Add Test Text Widget
                 ProgressBarWidget progressWidget = new ProgressBarWidget();
                 progressWidget.setLayoutX(100.0);
-                progressWidget.setLayoutY(100.0);
+                progressWidget.setLayoutY(200.0);
                 mainWidgetArea.getChildren().add(progressWidget);
                 // Close the dialog
                 stage = (Stage) cancelButton.getScene().getWindow();
@@ -93,7 +95,7 @@ public class FXMLAddWidgetController implements Initializable
                 // Add Test Text Widget
                 LEDWidget ledWidget = new LEDWidget();
                 ledWidget.setLayoutX(100.0);
-                ledWidget.setLayoutY(100.0);
+                ledWidget.setLayoutY(300.0);
                 mainWidgetArea.getChildren().add(ledWidget);
                 // Close the dialog
                 stage = (Stage) cancelButton.getScene().getWindow();
