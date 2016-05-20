@@ -17,7 +17,7 @@
       <Text layoutX="26.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Version: " />
       <Text layoutX="83.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1.0" />
       <Text layoutX="26.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Info:" />
-      <Text layoutX="69.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" />
-      <Text layoutX="234.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" />
+      <Text layoutX="69.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: mickelsont@cwu.edu" />
+      <Text layoutX="234.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone: 1-425-971-5327" />
    </children>
 </AnchorPane>
