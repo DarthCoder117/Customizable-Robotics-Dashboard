@@ -14,6 +14,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.Parent;
 import edu.cwu.rrdtp.*;
+import javafx.animation.PauseTransition;
+import javafx.util.Duration;
 
 /**
  *
@@ -40,6 +42,13 @@ public class DashboardApplication extends Application
         {
             rrdtpConnection.startClient(DashboardSettings.getIpAddress(), DashboardSettings.getPort());
         }
+        
+        //Poll connection in background
+        PauseTransition wait = new PauseTransition(Duration.millis(33.333333));
+        wait.setOnFinished((e) -> {
+            rrdtpConnection.poll();
+        });
+        wait.play();
         
         //Load main window
         primaryStage = stage;
