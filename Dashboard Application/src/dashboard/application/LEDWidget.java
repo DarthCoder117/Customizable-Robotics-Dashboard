@@ -16,14 +16,15 @@ import javafx.scene.shape.Circle;
  *
  * @author Brennan
  */
-public class LEDWidget extends DataWidget 
+public class LEDWidget extends NamedWidget 
 {
 
     final HBox hb = null;
 
     public LEDWidget() 
     {
-
+        super();
+        
             // New Label object
             final Label label = new Label();
             label.setText("LED:     " );

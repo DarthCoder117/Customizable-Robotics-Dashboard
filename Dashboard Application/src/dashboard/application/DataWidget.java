@@ -34,6 +34,9 @@ public abstract class DataWidget extends Group implements EditorContext.IEditorC
     {
         super();
      
+        //Init default properties
+        setIdentifier("");
+        
         //Listen for editing context changes
         EditorContext.addContextListener(this);
         
@@ -151,7 +154,10 @@ public abstract class DataWidget extends Group implements EditorContext.IEditorC
     
     private void onPropertiesMenu(ActionEvent e)
     {
+        PropertiesDialog props = new PropertiesDialog(this);
+        props.showAndWait();
         
+        //TODO: Update from new properties
     }
     
     private void onDeleteMenu(ActionEvent e)
@@ -185,4 +191,7 @@ public abstract class DataWidget extends Group implements EditorContext.IEditorC
     {
         return widgetProperties;
     }
+    
+    //Called whenever a property is edited by the user.
+    public abstract void onPropertyEdited(String name, Object value);
 }

@@ -4,12 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/LEDWidget.java</file>
+            <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/ProgressBarProperties.java</file>
             <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/EditorContext.java</file>
             <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/DashboardSettings.java</file>
+            <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/NamedWidget.java</file>
             <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/DataWidget.java</file>
-            <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/DashboardApplication.java</file>
-            <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/FXMLDashboard.fxml</file>
-            <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/FXMLDashboardController.java</file>
+            <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/ProgressBarWidget.java</file>
+            <file>file:/D:/Projects/Robotics/Customizable-Robotics-Dashboard/Dashboard%20Application/src/dashboard/application/PropertiesDialog.java</file>
         </group>
     </open-files>
 </project-private>
