@@ -5,6 +5,8 @@
  */
 package dashboard.application;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -18,23 +20,54 @@ import javafx.scene.shape.Circle;
  */
 public class LEDWidget extends NamedWidget 
 {
-
-    final HBox hb = null;
-
+    final Label label = new Label();
+    final HBox hb = new HBox();
+    final Circle led = new Circle(10, 10, 20);
+    
     public LEDWidget() 
     {
         super();
         
-            // New Label object
-            final Label label = new Label();
-            label.setText("LED:     " );
-            
-            final Circle led = new Circle(10, 10, 20);
-            led.setFill(Color.RED);
-            final HBox hb = new HBox();
-            hb.setAlignment(Pos.CENTER);
-            hb.getChildren().addAll(label, led);
-            
-            this.getChildren().add(hb);
+        //Bind label text to name
+        label.textProperty().bindBidirectional(this.nameProperty());
+        
+        //Setup default LED display options
+        led.setStroke(Color.BLACK);
+        led.setStrokeWidth(2);
+        led.setRadius(15);
+
+        //Setup horizontal box
+        hb.setAlignment(Pos.CENTER);
+        hb.getChildren().addAll(label, led);
+        hb.setSpacing(10);
+
+        this.getChildren().add(hb);
+        
+        //Add editable properties
+        addEditableProperty(onColor);
+        addEditableProperty(offColor);
+        
+        addEditableProperty(led.radiusProperty());
+        addEditableProperty(led.strokeWidthProperty());
     }
+    
+    private ObjectProperty<Color> onColor = new SimpleObjectProperty<>(this, "on color", Color.GREENYELLOW);
+    private ObjectProperty<Color> offColor = new SimpleObjectProperty<>(this, "off color", Color.GREY);
+    
+    //Sets the color of the LED when it's in the on state.
+    public void setColor(Color color)
+    {
+        onColor.set(color);
+    }
+    //Gets the color of the LED when it's in the on state.
+    public Color getColor()
+    {
+        return onColor.get();
+    }
+    
+    public ObjectProperty<Color> onColorProperty()
+    {
+        return onColor;
+    }
+
 }

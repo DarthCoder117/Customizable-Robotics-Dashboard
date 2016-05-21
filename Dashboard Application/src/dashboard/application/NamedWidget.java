@@ -5,6 +5,9 @@
  */
 package dashboard.application;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  *
  * @author super
@@ -15,17 +18,24 @@ public abstract class NamedWidget extends DataWidget
     {
         super();
         
-        setName("Default");
+        addEditableProperty(name);
     }
     
-    ///Gets the name that this widget should display.
-    public void setName(String identifier)
+    protected final StringProperty name = new SimpleStringProperty(this, "name", "New Widget");
+    
+    ///Sets the name identifier that this widget should display.
+    public final void setName(String n)
     {
-        widgetProperties.setProperty("name", identifier);
+        name.set(n);
     }
-    ///Gets the name that this widget should display.
-    public String getName()
+    ///Gets the name identifier that this widget should display.
+    public final String getName()
     {
-        return widgetProperties.getProperty("name", "");
+        return name.get();
+    }
+    
+    public final StringProperty nameProperty()
+    {
+        return name;
     }
 }

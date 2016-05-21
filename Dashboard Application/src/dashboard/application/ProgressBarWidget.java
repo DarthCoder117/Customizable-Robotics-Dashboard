@@ -40,10 +40,4 @@ public class ProgressBarWidget extends NamedWidget
             
             this.getChildren().add(hb);
     }
-
-    @Override
-    public void onPropertyEdited(String name, Object value) 
-    {
-        
-    }
 }

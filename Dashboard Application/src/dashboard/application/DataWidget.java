@@ -5,8 +5,12 @@
  */
 package dashboard.application;
 
+import java.util.LinkedList;
 import java.util.Optional;
 import java.util.Properties;
+import javafx.beans.property.Property;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -20,13 +24,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
-/**
- * Base class for data display widgets.
- */
+//Data display widget base class. 
+//This base class implements the common editing and identifier features of data widgets.
 public abstract class DataWidget extends Group implements EditorContext.IEditorContextListener
 {
-    protected Properties widgetProperties = new Properties();
-    
     private final DropShadow borderGlow = new DropShadow();
     private final ContextMenu contextMenu = new ContextMenu();
     
@@ -34,9 +35,6 @@ public abstract class DataWidget extends Group implements EditorContext.IEditorC
     {
         super();
      
-        //Init default properties
-        setIdentifier("");
-        
         //Listen for editing context changes
         EditorContext.addContextListener(this);
         
@@ -62,6 +60,8 @@ public abstract class DataWidget extends Group implements EditorContext.IEditorC
         
         //Check for edit mode on widget creation
         onEditModeChanged(EditorContext.isEditModeEnabled());
+        
+        addEditableProperty(identifier);
     }
     
     @Override
@@ -155,9 +155,7 @@ public abstract class DataWidget extends Group implements EditorContext.IEditorC
     private void onPropertiesMenu(ActionEvent e)
     {
         PropertiesDialog props = new PropertiesDialog(this);
-        props.showAndWait();
-        
-        //TODO: Update from new properties
+        props.show();
     }
     
     private void onDeleteMenu(ActionEvent e)
@@ -175,23 +173,34 @@ public abstract class DataWidget extends Group implements EditorContext.IEditorC
         });   
     }
     
+    protected StringProperty identifier = new SimpleStringProperty(this, "identifier", "");
+    
     ///Gets the value identifier that this widget should display.
-    public void setIdentifier(String identifier)
+    public void setIdentifier(String ident)
     {
-        widgetProperties.setProperty("identifier", identifier);
+        identifier.set(ident);
     }
     ///Gets the value identifier that this widget should display.
     public String getIdentifier()
     {
-        return widgetProperties.getProperty("identifier", "");
+        return identifier.get();
     }
     
-    ///Returns the properties object used by this widget.
-    public Properties getWidgetProperties()
+    public StringProperty identifierProperty()
     {
-        return widgetProperties;
+        return identifier;
     }
     
-    //Called whenever a property is edited by the user.
-    public abstract void onPropertyEdited(String name, Object value);
+    private final LinkedList<Property> editableProperties = new LinkedList<>();
+    
+    //Adds a property to the list of editable properties
+    public final void addEditableProperty(Property prop)
+    {
+        editableProperties.add(prop);
+    }
+    
+    public final LinkedList<Property> getEditableProperties()
+    {
+        return editableProperties;
+    }
 }

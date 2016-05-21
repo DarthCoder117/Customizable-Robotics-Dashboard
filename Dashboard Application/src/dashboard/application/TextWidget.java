@@ -40,5 +40,4 @@ public class TextWidget extends DataWidget {
         this.getChildren().addAll(label);
         
     }
-    
 }
