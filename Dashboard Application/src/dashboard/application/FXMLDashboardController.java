@@ -7,6 +7,7 @@ package dashboard.application;
  */
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,10 +17,13 @@ import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.HBox;
@@ -177,27 +181,6 @@ public class FXMLDashboardController implements Initializable, EditorContext.IEd
             Logger.getLogger(DashboardApplication.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }
-
-    @FXML
-    private void handleFileMenuActionDeleteWidget(ActionEvent event) 
-    {
-        System.out.println("Delete Widget");
-        
-        try 
-        {
-            Parent root;
-            Stage stage = new Stage();
-            root = FXMLLoader.load(getClass().getResource("FXMLDeleteWidget.fxml"));
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Delete Widget");
-            stage.show();
-        } 
-        catch (Exception ex)
-        {
-            Logger.getLogger(DashboardApplication.class.getName()).log(Level.SEVERE, null, ex);
-        }   
-    }
     
     @FXML
     private void handleFileMenuActionConnection(ActionEvent event)
@@ -221,25 +204,36 @@ public class FXMLDashboardController implements Initializable, EditorContext.IEd
     }
     
     @FXML
-    private void handleFileMenuActionClear(ActionEvent event) {
-        
-        // Clear the dashboard
-        this.mainWidgetArea.getChildren().clear();
-        
+    private void handleFileMenuActionClear(ActionEvent event) 
+    {
+        Alert alert = new Alert(Alert.AlertType.WARNING, "This will delete all widgets from the dashboard, are you sure you want to do this?", ButtonType.YES, ButtonType.NO);
+        alert.setTitle("Confirm Clear");
+        alert.setHeaderText("Confirm Clear");
+        Optional<ButtonType> result = alert.showAndWait();
+        result.ifPresent(respones -> {
+            if (respones == ButtonType.YES)
+            {
+                EditorContext.setSelection(null);
+                
+                //Unregister all widgets as listeners
+                for (Node n : mainWidgetArea.getChildren())
+                {
+                    if (n instanceof DataWidget)
+                    {
+                        DataWidget widget = (DataWidget)n;
+                        EditorContext.removeContextListener(widget);
+                    }
+                }
+                
+                //Clear everything
+                this.mainWidgetArea.getChildren().clear();
+            }
+        });
     }
 
     @FXML
-    private void handleFileMenuActionFile(ActionEvent event) {
-    }
+    private void handleFileMenuActionFile(ActionEvent event) {}
 
     @Override
-    public void onSelectionChanged(DataWidget selected) 
-    {
-        
-    }
-
-    
-    
-
-    
+    public void onSelectionChanged(DataWidget selected) {}
 }

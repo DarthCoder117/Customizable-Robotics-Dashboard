@@ -32,8 +32,7 @@
                 <Menu mnemonicParsing="false" text="Widgets">
                   <items>
                     <MenuItem id="item_add" mnemonicParsing="false" onAction="#handleFileMenuActionAddWidget" text="Add" />
-                        <MenuItem id="item_delete_widget" mnemonicParsing="false" onAction="#handleFileMenuActionDeleteWidget" text="Delete Widget" />
-                        <MenuItem mnemonicParsing="false" onAction="#handleFileMenuActionClear" text="Clear" />
+                    <MenuItem mnemonicParsing="false" onAction="#handleFileMenuActionClear" text="Clear" />
                   </items>
                 </Menu>
                   <Menu mnemonicParsing="false" text="Connection">
