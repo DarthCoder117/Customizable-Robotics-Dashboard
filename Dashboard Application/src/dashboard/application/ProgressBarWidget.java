@@ -16,28 +16,22 @@ import javafx.scene.layout.HBox;
  */
 public class ProgressBarWidget extends NamedWidget 
 {
-    // Fields
-    public String LastDisplayedValue;
-    private Label label;
-    private ProgressBar pb;
-    final HBox hb = null;
-    final float[] value = new float[]{1.0f};
+    private final Label label = new Label();
+    private final ProgressBar pb = new ProgressBar();
+    final HBox hb = new HBox();
 
     public ProgressBarWidget()
     {
         super();
-        
-            // New Label object
-            final Label label = new Label();
-            label.setText("PROGRESS:    " );
 
-            final ProgressBar pb = new ProgressBar();
-            //pb.setProgress(BASELINE_OFFSET_SAME_AS_HEIGHT);
-            pb.setProgress(0.5);
-            final HBox hb = new HBox();
-            hb.setAlignment(Pos.CENTER);
-            hb.getChildren().addAll(label, pb);
-            
-            this.getChildren().add(hb);
+        //Bind label text
+        label.textProperty().bindBidirectional(this.nameProperty());
+        
+        pb.setProgress(0.5);
+        
+        hb.setAlignment(Pos.CENTER);
+        hb.getChildren().addAll(label, pb);
+
+        this.getChildren().add(hb);
     }
 }

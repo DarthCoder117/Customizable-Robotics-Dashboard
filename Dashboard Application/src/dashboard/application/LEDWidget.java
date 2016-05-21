@@ -5,13 +5,14 @@
  */
 package dashboard.application;
 
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 
 /**
@@ -32,6 +33,7 @@ public class LEDWidget extends NamedWidget
         label.textProperty().bindBidirectional(this.nameProperty());
         
         //Setup default LED display options
+        led.fillProperty().bind(onColor);
         led.setStroke(Color.BLACK);
         led.setStrokeWidth(2);
         led.setRadius(15);
@@ -44,6 +46,8 @@ public class LEDWidget extends NamedWidget
         this.getChildren().add(hb);
         
         //Add editable properties
+        addEditableProperty(invert);
+        
         addEditableProperty(onColor);
         addEditableProperty(offColor);
         
@@ -51,8 +55,9 @@ public class LEDWidget extends NamedWidget
         addEditableProperty(led.strokeWidthProperty());
     }
     
-    private ObjectProperty<Color> onColor = new SimpleObjectProperty<>(this, "on color", Color.GREENYELLOW);
-    private ObjectProperty<Color> offColor = new SimpleObjectProperty<>(this, "off color", Color.GREY);
+    private final ObjectProperty<Color> onColor = new SimpleObjectProperty<>(this, "on color", Color.GREENYELLOW);
+    private final ObjectProperty<Color> offColor = new SimpleObjectProperty<>(this, "off color", Color.GREY);
+    private final BooleanProperty invert = new SimpleBooleanProperty(this, "invert", false);
     
     //Sets the color of the LED when it's in the on state.
     public void setColor(Color color)

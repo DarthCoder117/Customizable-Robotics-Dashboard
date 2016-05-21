@@ -130,8 +130,17 @@ public abstract class DataWidget extends Group implements EditorContext.IEditorC
                 double offsetX = me.getSceneX()-mouseStartX;
                 double offsetY = me.getSceneY()-mouseStartY;
 
-                setLayoutX(widgetStartX+offsetX);
-                setLayoutY(widgetStartY+offsetY);
+                double posX = widgetStartX+offsetX;
+                double posY = widgetStartY+offsetY;
+                
+                if (me.isControlDown())
+                {
+                    posX = 15.0*Math.floor(posX/15.0);
+                    posY = 15.0*Math.floor(posY/15.0);
+                }
+                
+                setLayoutX(posX);
+                setLayoutY(posY);
             }
             
             //All mouse events are consumed in edit mode.

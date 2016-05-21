@@ -135,6 +135,7 @@ public class PropertiesDialog extends Dialog
             super(prop);
            
             CheckBox checkbox = new CheckBox();
+            HBox.setHgrow(checkbox, Priority.ALWAYS);
             checkbox.setText(prop.getName());
             checkbox.selectedProperty().bindBidirectional(prop);
             
