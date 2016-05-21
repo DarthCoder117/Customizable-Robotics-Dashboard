@@ -30,7 +30,7 @@ import javafx.stage.Modality;
  *
  * @author Brennan
  */
-public class FXMLDashboardController implements Initializable 
+public class FXMLDashboardController implements Initializable, EditorContext.IEditorContextListener
 {
     @FXML private AnchorPane mainWidgetArea;
     @FXML private MenuBar menuBar;
@@ -39,31 +39,9 @@ public class FXMLDashboardController implements Initializable
 
     @FXML private CheckMenuItem enableEditModeMenuItem;
     
-    private boolean editModeEnabled = false;
-    
-    public void SetEditMode(boolean enabled)
-    {
-        editModeEnabled = enabled;
-        
-        //Disable widgets in edit mode.
-        if (enabled)
-        {
-            mainWidgetArea.setDisable(true);
-        }
-        else
-        {
-            mainWidgetArea.setDisable(false);
-        }
-    }
-    
-    public boolean IsInEditMode()
-    {
-        return editModeEnabled;
-    }
-    
     public FXMLDashboardController()
     {
-        
+        EditorContext.addContextListener(this);
     }
     
     /**
@@ -85,10 +63,16 @@ public class FXMLDashboardController implements Initializable
         this.primaryStage = stage;
     }
     
+    @Override
+    public void onEditModeChanged(boolean editMode)
+    {
+        enableEditModeMenuItem.setSelected(editMode);
+    }
+    
     @FXML
     private void onEditModeMenuAction(ActionEvent event)
     {
-        SetEditMode(enableEditModeMenuItem.isSelected());
+        EditorContext.setEditMode(enableEditModeMenuItem.isSelected());
     }
     
     @FXML
@@ -246,6 +230,12 @@ public class FXMLDashboardController implements Initializable
 
     @FXML
     private void handleFileMenuActionFile(ActionEvent event) {
+    }
+
+    @Override
+    public void onSelectionChanged(DataWidget selected) 
+    {
+        
     }
 
     

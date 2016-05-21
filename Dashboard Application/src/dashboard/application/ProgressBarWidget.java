@@ -14,7 +14,8 @@ import javafx.scene.layout.HBox;
  *
  * @author Brennan
  */
-public class ProgressBarWidget extends DataWidget {
+public class ProgressBarWidget extends DataWidget 
+{
 
     // Fields
     public String LastDisplayedValue;
@@ -23,7 +24,8 @@ public class ProgressBarWidget extends DataWidget {
     final HBox hb = null;
     final float[] value = new float[]{1.0f};
 
-    public ProgressBarWidget() {
+    public ProgressBarWidget()
+    {
 
             // New Label object
             final Label label = new Label();
@@ -37,9 +39,5 @@ public class ProgressBarWidget extends DataWidget {
             hb.getChildren().addAll(label, pb);
             
             this.getChildren().add(hb);
-    }
-
-    public static void main(String[] args) {
-        DataWidget.launch(args);
     }
 }

@@ -16,11 +16,13 @@ import javafx.scene.shape.Circle;
  *
  * @author Brennan
  */
-public class LEDWidget extends DataWidget {
+public class LEDWidget extends DataWidget 
+{
 
     final HBox hb = null;
 
-    public LEDWidget() {
+    public LEDWidget() 
+    {
 
             // New Label object
             final Label label = new Label();
@@ -33,9 +35,5 @@ public class LEDWidget extends DataWidget {
             hb.getChildren().addAll(label, led);
             
             this.getChildren().add(hb);
-    }
-
-    public static void main(String[] args) {
-        LEDWidget.launch(args);
     }
 }
