@@ -7,6 +7,7 @@ package dashboard.application;
 
 import edu.cwu.rrdtp.Connection;
 import javafx.animation.PauseTransition;
+import javafx.event.ActionEvent;
 import javafx.util.Duration;
 
 /**
@@ -48,7 +49,8 @@ public class ConnectionManager
         System.out.println("Port: "+port);
         
         //Reset background polling task
-        pollTask.setOnFinished((e) -> {
+        //TODO: Add polling frequency option
+        pollTask.setOnFinished((ActionEvent e) -> {
             rrdtpConnection.poll();
         });
         pollTask.play();
