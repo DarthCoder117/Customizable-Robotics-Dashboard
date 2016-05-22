@@ -49,6 +49,7 @@ public class FXMLConnectionInfoController implements Initializable
         DashboardSettings.setPort(Integer.parseInt(portField.getText()));
         
         DashboardSettings.saveSettings();
+        ConnectionManager.resetConnection();
         
         Stage stage = (Stage)portField.getScene().getWindow();
         stage.close();

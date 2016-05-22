@@ -25,30 +25,14 @@ public class DashboardApplication extends Application
 {
     public Stage primaryStage;
     
-    public static final Connection rrdtpConnection = new Connection();
-    
     @Override
     public void start(Stage stage) 
     {
         //Load settings
         DashboardSettings.loadSettings();
         
-        //Open connection
-        if (DashboardSettings.getIsServer())
-        {
-            rrdtpConnection.startServer(DashboardSettings.getPort());
-        }
-        else
-        {
-            rrdtpConnection.startClient(DashboardSettings.getIpAddress(), DashboardSettings.getPort());
-        }
-        
-        //Poll connection in background
-        PauseTransition wait = new PauseTransition(Duration.millis(33.333333));
-        wait.setOnFinished((e) -> {
-            rrdtpConnection.poll();
-        });
-        wait.play();
+        //Start connection
+        ConnectionManager.resetConnection();
         
         //Load main window
         primaryStage = stage;
@@ -89,6 +73,6 @@ public class DashboardApplication extends Application
         launch(args);
         
         //Close connection when done
-        rrdtpConnection.close();
+        ConnectionManager.close();
     }
 }
