@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -30,23 +31,12 @@ public class FXMLConnectionInfoController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        isServerCheckBox.setSelected(DashboardSettings.getIsServer());
-        ipAddressField.setText(DashboardSettings.getIpAddress());
+        ipAddressField.textProperty().bindBidirectional(DashboardSettings.ipAddressProperty());
+        isServerCheckBox.selectedProperty().bindBidirectional(DashboardSettings.isServerProperty());
+        
         portField.setText(String.valueOf(DashboardSettings.getPort()));
     }    
-    
-    @FXML
-    private void checkServerAction(ActionEvent event) 
-    {
-        DashboardSettings.setIsServer(isServerCheckBox.isSelected());
-    }
-
-    @FXML
-    private void ipAddressAction(ActionEvent event) 
-    {
-        DashboardSettings.setIpAddress(ipAddressField.getText());
-    }
-    
+  
     @FXML
     private void portAction(ActionEvent event) 
     {
@@ -56,6 +46,11 @@ public class FXMLConnectionInfoController implements Initializable
      @FXML
     private void handleActionSaveConfig(ActionEvent event) 
     {
+        DashboardSettings.setPort(Integer.parseInt(portField.getText()));
+        
         DashboardSettings.saveSettings();
+        
+        Stage stage = (Stage)portField.getScene().getWindow();
+        stage.close();
     }
 }

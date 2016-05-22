@@ -34,4 +34,6 @@ public class ProgressBarWidget extends NamedWidget
 
         this.getChildren().add(hb);
     }
+    
+    
 }

@@ -23,12 +23,12 @@
         </rowConstraints>
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="IP Address" wrappingWidth="88.13671875" />
-            <TextField fx:id="ipAddressField" onAction="#ipAddressAction" GridPane.columnIndex="1" />
+            <TextField fx:id="ipAddressField" GridPane.columnIndex="1" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Is Server" wrappingWidth="88.13671875" GridPane.rowIndex="2" />
-            <CheckBox fx:id="isServerCheckBox" mnemonicParsing="false" onAction="#checkServerAction" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <CheckBox fx:id="isServerCheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Port" wrappingWidth="88.13671875" GridPane.rowIndex="1" />
             <TextField fx:id="portField" onAction="#portAction" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" onAction="#handleActionSaveConfig" prefHeight="25.0" prefWidth="134.0" text="Save Configuration" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" onAction="#handleActionSaveConfig" prefHeight="25.0" prefWidth="134.0" text="Save" GridPane.rowIndex="3" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

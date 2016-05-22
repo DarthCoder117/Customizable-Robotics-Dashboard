@@ -66,7 +66,7 @@ public class DashboardApplication extends Application
             primaryStage.setTitle("Realtime Robotics Dashboard");
             
             //Fullscreen mode
-            if (DashboardSettings.getFullscreen())
+            if (DashboardSettings.getFullscreenEnabled())
             {
                 primaryStage.setFullScreen(true);
                 primaryStage.setFullScreenExitHint("");

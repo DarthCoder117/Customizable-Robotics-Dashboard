@@ -5,6 +5,10 @@
  */
 package dashboard.application;
 
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,82 +17,141 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /**
  * Global settings class for convenient access to configuration values.
  */
 public class DashboardSettings 
 {
-    private static final Properties properties = new Properties();
+    private static BooleanProperty showMenu = new SimpleBooleanProperty(null, "show menu", true);
     
     public static void setShowMenu(boolean show)
     {
-        properties.setProperty("show-menu", String.valueOf(show));
+        showMenu.set(show);
     }
     
     public static boolean getShowMenu()
     {
-        return Boolean.parseBoolean(properties.getProperty("show-menu", "true"));
+        return showMenu.get();
     }
     
-    public static void setFullscreen(boolean fullscreen)
+    public static BooleanProperty showMenuProperty()
     {
-        properties.setProperty("fullscreen", String.valueOf(fullscreen));
+        return showMenu;
     }
     
-    public static boolean getFullscreen()
+    private static BooleanProperty enableFullscreen = new SimpleBooleanProperty(null, "fullscreen", false);
+    
+    public static void setFulscreenEnabled(boolean b)
     {
-        return Boolean.parseBoolean(properties.getProperty("fullscreen", "false"));
+        enableFullscreen.set(b);
     }
+    
+    public static boolean getFullscreenEnabled()
+    {
+        return enableFullscreen.get();
+    }
+    
+    public static BooleanProperty fullscreenEnabledProperty()
+    {
+        return enableFullscreen;
+    }
+    
+    private static StringProperty ipAddress = new SimpleStringProperty(null, "ip address", "127.0.0.1");
     
     public static void setIpAddress(String ip)
     {
         //TODO: Validate ip address
-        
-        properties.setProperty("ip-address", ip);
+        ipAddress.set(ip);
     }
     
     public static String getIpAddress()
     {
-        return properties.getProperty("ip-address", "127.0.0.1");
+        return ipAddress.get();
     }
     
-    public static void setPort(int port)
+    public static StringProperty ipAddressProperty()
     {
-        properties.setProperty("port", String.valueOf(port));
+        return ipAddress;
+    }
+    
+    private static IntegerProperty port = new SimpleIntegerProperty(null, "port", 4309);
+    
+    public static void setPort(int portNum)
+    {
+        port.set(portNum);
     }
     
     public static int getPort()
     {
-        return Integer.parseInt(properties.getProperty("port", "4309"));
+        return port.get();
     }
     
-    public static void setIsServer(boolean isServer)
+    public static IntegerProperty portProperty()
     {
-        properties.setProperty("is-server", String.valueOf(isServer));
+        return port;
+    }
+    
+    private static BooleanProperty isServer = new SimpleBooleanProperty(null, "is server", false);
+    
+    public static void setIsServer(boolean b)
+    {
+        isServer.set(b);
     }
     
     public static boolean getIsServer()
     {
-        return Boolean.parseBoolean(properties.getProperty("is-server", "false"));
+        return isServer.get();
+    }
+    
+    public static BooleanProperty isServerProperty()
+    {
+        return isServer;
     }
     
     ///Loads the settings from the default location (settings.xml)
     public static void loadSettings()
     {
         File file = new File("settings.xml");
-        try 
+        if (file.exists())
         {
-            FileInputStream inputStream = new FileInputStream(file);
-            properties.loadFromXML(inputStream);
-        } 
-        catch (FileNotFoundException ex) 
+            XMLDecoder d = null;
+            try
+            {
+                d = new XMLDecoder(new BufferedInputStream(new FileInputStream(file)));
+                
+                //Connection
+                ipAddress.set((String)d.readObject());
+                port.set((Integer)d.readObject());
+                isServer.set((Boolean)d.readObject());
+                
+                //Display
+                enableFullscreen.set((Boolean)d.readObject());
+                showMenu.set((Boolean)d.readObject());
+            } 
+            catch (FileNotFoundException ex) 
+            {
+                Logger.getLogger(DashboardSettings.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            catch (ArrayIndexOutOfBoundsException ex)
+            {
+                //Logger.getLogger(DashboardSettings.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            if (d!=null)
+            {
+                d.close();
+            }
+        }
+        else
         {
-            Logger.getLogger(DashboardSettings.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        catch (IOException ex) 
-        {
-            Logger.getLogger(DashboardSettings.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("No settings.xml file found... Using defaults.");
         }
     }
     
@@ -96,18 +159,30 @@ public class DashboardSettings
     public static void saveSettings()
     {
         File file = new File("settings.xml");
-        try 
+        
+        XMLEncoder e = null;
+        try
         {
-            FileOutputStream outputStream = new FileOutputStream(file);
-            properties.storeToXML(outputStream, null);
+            e = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(file)));
+            
+            //Connection
+            e.writeObject(ipAddress.get());
+            e.writeObject(port.get());
+            e.writeObject(isServer.get());
+            
+            //Display
+            e.writeObject(enableFullscreen.get());
+            e.writeObject(showMenu.get());
         } 
         catch (FileNotFoundException ex) 
         {
             Logger.getLogger(DashboardSettings.class.getName()).log(Level.SEVERE, null, ex);
         } 
-        catch (IOException ex) 
+        
+        if (e!=null)
         {
-            Logger.getLogger(DashboardSettings.class.getName()).log(Level.SEVERE, null, ex);
+            e.flush();
+            e.close();
         }
     }
 }
