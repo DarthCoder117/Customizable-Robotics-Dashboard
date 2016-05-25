@@ -33,7 +33,7 @@ public class LEDWidget extends NamedWidget
         label.textProperty().bindBidirectional(this.nameProperty());
         
         //Setup default LED display options
-        led.fillProperty().bind(onColor);
+        led.setFill(onColor.get());
         led.setStroke(Color.BLACK);
         led.setStrokeWidth(2);
         led.setRadius(15);
@@ -74,5 +74,25 @@ public class LEDWidget extends NamedWidget
     {
         return onColor;
     }
-
+    
+    @Override
+    public void update()
+    {
+        boolean value = ConnectionManager.getConnection().GetBool(getIdentifier());
+        System.out.println(getIdentifier() + ": " + value);
+        
+        if (invert.get())
+        {
+            value = !value;
+        }
+        
+        if (value == true)
+        {
+            led.setFill(onColor.get());
+        }
+        else
+        {
+            led.setFill(offColor.get());
+        }
+    }
 }

@@ -37,6 +37,8 @@ public abstract class DataWidget extends Group implements EditorContext.IEditorC
      
         //Listen for editing context changes
         EditorContext.addContextListener(this);
+        //Connect widget
+        ConnectionManager.connectDataWidget(this);
         
         //Selection effect
         borderGlow.setColor(Color.RED);
@@ -212,4 +214,6 @@ public abstract class DataWidget extends Group implements EditorContext.IEditorC
     {
         return editableProperties;
     }
+    
+    public void update(){}
 }
