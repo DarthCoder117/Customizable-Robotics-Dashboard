@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -115,6 +116,20 @@ public class FXMLAddWidgetController implements Initializable
                 stage.close();
                 
                 break;
+                    
+                 case 4:
+                
+                // Add Test Text Widget
+                CheckBoxWidget CheckBox = new CheckBoxWidget();
+                CheckBox.setLayoutX(100.0);
+                CheckBox.setLayoutY(300.0);
+                mainWidgetArea.getChildren().add(CheckBox);
+                // Close the dialog
+                stage = (Stage) cancelButton.getScene().getWindow();
+                stage.close();
+                
+                break;
+                
                 
         }
         
