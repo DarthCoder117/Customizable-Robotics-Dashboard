@@ -43,7 +43,7 @@ public class FXMLAddWidgetController implements Initializable
     {
         
         //TODO: Initialize choice box with all widget types.
-        widgetTypeSelect.setItems(FXCollections.observableArrayList("Text Widget", "Progress Widget", "LED Widget"));
+        widgetTypeSelect.setItems(FXCollections.observableArrayList("Text Widget", "Progress Widget", "LED Widget" ,"SliderWidget"));
         
     }    
     
@@ -97,6 +97,19 @@ public class FXMLAddWidgetController implements Initializable
                 ledWidget.setLayoutX(100.0);
                 ledWidget.setLayoutY(300.0);
                 mainWidgetArea.getChildren().add(ledWidget);
+                // Close the dialog
+                stage = (Stage) cancelButton.getScene().getWindow();
+                stage.close();
+                
+                break;
+                
+                case 3:
+                
+                // Add Test Text Widget
+                SliderWidget slider = new SliderWidget();
+                slider.setLayoutX(100.0);
+                slider.setLayoutY(300.0);
+                mainWidgetArea.getChildren().add(slider);
                 // Close the dialog
                 stage = (Stage) cancelButton.getScene().getWindow();
                 stage.close();
