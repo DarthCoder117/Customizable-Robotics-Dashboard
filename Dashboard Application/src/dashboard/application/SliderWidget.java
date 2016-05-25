@@ -40,7 +40,8 @@ public class SliderWidget extends DataWidget {
 
         slider.setSnapToTicks(true);
         slider.setBlockIncrement(5);
-
+        
+        hb.setAlignment(Pos.CENTER);
 
         hb.getChildren().addAll(label, pb);
         this.getChildren().add(hb);
