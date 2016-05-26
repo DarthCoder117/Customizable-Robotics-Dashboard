@@ -44,7 +44,7 @@ public class FXMLAddWidgetController implements Initializable
     {
         
         //TODO: Initialize choice box with all widget types.
-        widgetTypeSelect.setItems(FXCollections.observableArrayList("Text Widget", "Progress Widget", "LED Widget" ,"SliderWidget","CheckBox"));
+        widgetTypeSelect.setItems(FXCollections.observableArrayList("Text Widget", "Progress Widget", "LED Widget" ,"SliderWidget","CheckBox", "Web Browser"));
         
     }    
     
@@ -104,7 +104,7 @@ public class FXMLAddWidgetController implements Initializable
                 
                 break;
                 
-                case 3:
+            case 3:
                 
                 // Add Test Text Widget
                 SliderWidget slider = new SliderWidget();
@@ -117,7 +117,7 @@ public class FXMLAddWidgetController implements Initializable
                 
                 break;
                     
-                 case 4:
+            case 4:
                 
                 // Add Test Text Widget
                 CheckBoxWidget CheckBox = new CheckBoxWidget();
@@ -130,6 +130,19 @@ public class FXMLAddWidgetController implements Initializable
                 
                 break;
                 
+            case 5:
+                
+                // Add Web Browser Widget
+                WebBrowserWidget webBrowserWidget = new WebBrowserWidget();
+                webBrowserWidget.setLayoutX(200.0);
+                webBrowserWidget.setLayoutY(100.0);
+                
+                mainWidgetArea.getChildren().add(webBrowserWidget);
+                // Close the dialog
+                stage = (Stage) cancelButton.getScene().getWindow();
+                stage.close();
+                
+                break;
                 
         }
         
