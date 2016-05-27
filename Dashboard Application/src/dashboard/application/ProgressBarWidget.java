@@ -27,10 +27,10 @@ public class ProgressBarWidget extends NamedWidget
         //Bind label text
         label.textProperty().bindBidirectional(this.nameProperty());
         
-       pb.setProgress(0.5);
+        pb.setProgress(0.5);
         
         hb.setAlignment(Pos.CENTER);
-       hb.getChildren().addAll(label, pb);
+        hb.getChildren().addAll(label, pb);
 
         this.getChildren().add(hb);
     }
