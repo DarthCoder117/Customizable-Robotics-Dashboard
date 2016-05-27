@@ -79,7 +79,6 @@ public class LEDWidget extends NamedWidget
     public void update()
     {
         boolean value = ConnectionManager.getConnection().GetBool(getIdentifier());
-        System.out.println(getIdentifier() + ": " + value);
         
         if (invert.get())
         {
