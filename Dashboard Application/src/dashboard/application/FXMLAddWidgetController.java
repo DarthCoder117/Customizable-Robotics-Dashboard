@@ -51,102 +51,69 @@ public class FXMLAddWidgetController implements Initializable
     @FXML
     private void handleActionAddWidgets(ActionEvent event)
     {
-        System.out.println("Add Widgets");
-        
-        //TODO: Create widget based on choice box and close the dialog
-        
-        //Button btn = new Button("Test Button");
-        //btn.setLayoutX(100.0);
-        //btn.setLayoutY(100.0);
-        
         Stage stage;
-        // Switch Case to add the 3 different widgets
+ 
         int widgetPos = widgetTypeSelect.getSelectionModel().getSelectedIndex();
-        
-        switch(widgetPos) {
-            
+        switch(widgetPos) 
+        {
             case 0:
-                
-                // Add Test Text Widget
+
                 TextWidget textWidget = new TextWidget();
                 mainWidgetArea.getChildren().add(textWidget);
-                
-                // Close the dialog
-                stage = (Stage) cancelButton.getScene().getWindow();
-              
-                stage.close();
+                textWidget.setLayoutX(100.0);
+                textWidget.setLayoutY(200.0);
                 
                 break;
             
             case 1: 
-                
-                // Add Test Text Widget
+      
                 ProgressBarWidget progressWidget = new ProgressBarWidget();
                 progressWidget.setLayoutX(100.0);
                 progressWidget.setLayoutY(200.0);
                 mainWidgetArea.getChildren().add(progressWidget);
-                // Close the dialog
-                stage = (Stage) cancelButton.getScene().getWindow();
-                stage.close();
                 
                 break;
                 
             case 2:
-                
-                // Add Test Text Widget
+        
                 LEDWidget ledWidget = new LEDWidget();
                 ledWidget.setLayoutX(100.0);
                 ledWidget.setLayoutY(300.0);
                 mainWidgetArea.getChildren().add(ledWidget);
-                // Close the dialog
-                stage = (Stage) cancelButton.getScene().getWindow();
-                stage.close();
                 
                 break;
                 
             case 3:
-                
-                // Add Test Text Widget
+       
                 SliderWidget slider = new SliderWidget();
                 slider.setLayoutX(100.0);
                 slider.setLayoutY(400.0);
                 mainWidgetArea.getChildren().add(slider);
-                // Close the dialog
-                stage = (Stage) cancelButton.getScene().getWindow();
-                stage.close();
-                
+
                 break;
                     
             case 4:
-                
-                // Add Test Text Widget
+         
                 CheckBoxWidget CheckBox = new CheckBoxWidget();
                 CheckBox.setLayoutX(100.0);
                 CheckBox.setLayoutY(500.0);
                 mainWidgetArea.getChildren().add(CheckBox);
-                // Close the dialog
-                stage = (Stage) cancelButton.getScene().getWindow();
-                stage.close();
                 
                 break;
                 
             case 5:
-                
-                // Add Web Browser Widget
+      
                 WebBrowserWidget webBrowserWidget = new WebBrowserWidget();
                 webBrowserWidget.setLayoutX(200.0);
-                webBrowserWidget.setLayoutY(100.0);
-                
+                webBrowserWidget.setLayoutY(100.0);     
                 mainWidgetArea.getChildren().add(webBrowserWidget);
-                // Close the dialog
-                stage = (Stage) cancelButton.getScene().getWindow();
-                stage.close();
-                
-                break;
-                
+
+                break;   
         }
         
-       
+        //Close the dialog
+        stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
     
     @FXML
