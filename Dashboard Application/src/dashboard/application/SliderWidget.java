@@ -5,33 +5,30 @@
  */
 package dashboard.application;
 
-import static javafx.application.Application.launch;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 
 /**
  *
  * @author GithinjiM
  */
-public class SliderWidget extends DataWidget {
-
+public class SliderWidget extends NamedWidget 
+{
     private final Label label = new Label();
-    private final Slider pb = new Slider();
+    private final Slider slider = new Slider();
     final HBox hb = new HBox();
 
-    public SliderWidget() {
-
-        Slider slider = new Slider();
+    public SliderWidget() 
+    {
+        label.textProperty().bind(nameProperty());
+        
+        slider.valueProperty().addListener((e) -> this.valueChanged());
+        
         slider.setMin(0);
         slider.setMax(100);
-        slider.setValue(40);
-
+        
         slider.setMajorTickUnit(50);
         slider.setMinorTickCount(4);
 
@@ -43,9 +40,25 @@ public class SliderWidget extends DataWidget {
         
         hb.setAlignment(Pos.CENTER);
 
-        hb.getChildren().addAll(label, pb);
+        hb.getChildren().addAll(label, slider);
         this.getChildren().add(hb);
-
+        
+        addEditableProperty(slider.minProperty());
+        addEditableProperty(slider.maxProperty());
+        
+        addEditableProperty(slider.majorTickUnitProperty());
+        addEditableProperty(slider.minorTickCountProperty());
+        
+        addEditableProperty(slider.showTickLabelsProperty());
+        addEditableProperty(slider.showTickMarksProperty());
+        addEditableProperty(slider.snapToTicksProperty());
     }
-
+    
+    void valueChanged()
+    {
+        if (getIdentifier().length() != 0)
+        {
+            ConnectionManager.getConnection().SetDouble(identifierProperty().get(), slider.getValue());
+        }
+    }
 }
