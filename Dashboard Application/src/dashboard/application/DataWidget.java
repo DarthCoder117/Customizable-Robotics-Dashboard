@@ -7,12 +7,10 @@ package dashboard.application;
 
 import java.util.LinkedList;
 import java.util.Optional;
-import java.util.Properties;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -47,10 +45,10 @@ public abstract class DataWidget extends Group implements EditorContext.IEditorC
         borderGlow.setHeight(10);
 
         //Register required mouse events for drag and drop
-        setOnMousePressed(this::mousePressed);
-        setOnMouseDragged(this::mouseDragged);
-        setOnMouseReleased(this::mouseReleased);
-
+        addEventFilter(MouseEvent.ANY, this::consumeMouseEvent);
+        addEventFilter(MouseEvent.MOUSE_PRESSED, this::mousePressed);
+        addEventFilter(MouseEvent.MOUSE_DRAGGED, this::mouseDragged);
+        
         //Setup context menu
         MenuItem properties = new MenuItem("Properties");
         properties.setOnAction(this::onPropertiesMenu);
@@ -150,7 +148,7 @@ public abstract class DataWidget extends Group implements EditorContext.IEditorC
         }
     }
 
-    private void mouseReleased(MouseEvent me)
+    private void consumeMouseEvent(MouseEvent me)
     {
         if (EditorContext.isEditModeEnabled())
         {

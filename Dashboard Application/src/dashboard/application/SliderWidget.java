@@ -39,6 +39,7 @@ public class SliderWidget extends NamedWidget
         slider.setBlockIncrement(5);
         
         hb.setAlignment(Pos.CENTER);
+        hb.setSpacing(10);
 
         hb.getChildren().addAll(label, slider);
         this.getChildren().add(hb);

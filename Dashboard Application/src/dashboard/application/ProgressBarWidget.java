@@ -35,6 +35,7 @@ public class ProgressBarWidget extends NamedWidget
         label.textProperty().bindBidirectional(this.nameProperty());
         
         hb.setAlignment(Pos.CENTER);
+        hb.setSpacing(10);
         hb.getChildren().addAll(label, pb);
 
         this.getChildren().add(hb);
