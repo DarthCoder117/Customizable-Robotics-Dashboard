@@ -6,6 +6,12 @@ package dashboard.application;
  * and open the template in the editor.
  */
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -59,8 +65,73 @@ public class FXMLDashboardController implements Initializable, EditorContext.IEd
         {
             ((HBox)menuBar.getParent()).getChildren().remove(menuBar);
         }
+        
+        loadLayout();
     }    
     
+    private void saveLayout()
+    {
+        System.out.println("Saving layout...");
+        
+        File file = new File("layout.conf");
+        try
+        {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+            
+            //Number of widgets
+            out.writeInt(mainWidgetArea.getChildren().size());
+            
+            for (Node node : mainWidgetArea.getChildren())
+            {
+                DataWidget widget = (DataWidget)node;
+                out.writeObject(widget);
+            }
+            
+            out.close();
+        }
+        catch(IOException ex)
+        {
+            Logger.getLogger(FXMLDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        System.out.println("Successfully saved layout.");
+    }
+    
+    private void loadLayout()
+    {
+        System.out.println("Loading layout...");
+        
+        File file = new File("layout.conf");
+        if (file.exists())
+        {
+            try
+            {
+                ObjectInputStream in = new ObjectInputStream(new FileInputStream("layout.conf"));
+
+                //Number of widgets
+                int numWidgets = in.readInt();
+
+                for (int i=0; i<numWidgets; ++i)
+                {
+                    DataWidget widget = null;
+                    widget = (DataWidget)in.readObject();
+                    mainWidgetArea.getChildren().add(widget);
+                }
+
+                in.close();
+            }
+            catch(IOException ex)
+            {
+                Logger.getLogger(FXMLDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+            catch (ClassNotFoundException ex)
+            {
+                Logger.getLogger(FXMLDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            System.out.println("Successfully loaded layout.");
+        }
+    }
     
     public void setPrimaryStage(Stage stage) 
     {
@@ -82,18 +153,15 @@ public class FXMLDashboardController implements Initializable, EditorContext.IEd
     @FXML
     private void handleFileMenuActionSaveConfig(ActionEvent event) 
     {
-        // do stuff if menu is clicked
-        System.out.println("File Menu Item Save Config");
+        saveLayout();
     }
 
     @FXML
     private void handleFileMenuActionLoadConfig(ActionEvent event)
     {
-        
-        System.out.println("Load Config");
+        loadLayout();
     }
-    
-    
+      
     @FXML
     private void handleFileMenuActionExit(ActionEvent event) 
     {

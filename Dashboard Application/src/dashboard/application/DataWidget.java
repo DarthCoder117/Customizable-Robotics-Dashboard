@@ -5,8 +5,15 @@
  */
 package dashboard.application;
 
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Optional;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -24,7 +31,7 @@ import javafx.scene.paint.Color;
 
 //Data display widget base class. 
 //This base class implements the common editing and identifier features of data widgets.
-public abstract class DataWidget extends Group implements EditorContext.IEditorContextListener 
+public abstract class DataWidget extends Group implements EditorContext.IEditorContextListener, Externalizable
 {
     private final DropShadow borderGlow = new DropShadow();
     private final ContextMenu contextMenu = new ContextMenu();
@@ -201,7 +208,7 @@ public abstract class DataWidget extends Group implements EditorContext.IEditorC
         return identifier;
     }
 
-    private final LinkedList<Property> editableProperties = new LinkedList<>();
+    private final ArrayList<Property> editableProperties = new ArrayList<>();
 
     //Adds a property to the list of editable properties
     public final void addEditableProperty(Property prop)
@@ -209,11 +216,73 @@ public abstract class DataWidget extends Group implements EditorContext.IEditorC
         editableProperties.add(prop);
     }
 
-    public final LinkedList<Property> getEditableProperties()
+    public final ArrayList<Property> getEditableProperties()
     {
         return editableProperties;
     }
 
+    private class ColorWrapper implements Serializable
+    {
+        public String strColor;
+    };
+    
+    @Override
+    public void writeExternal(ObjectOutput out) throws IOException
+    {
+        //Position and size
+        out.writeDouble(getLayoutX());
+        out.writeDouble(getLayoutY());
+        out.writeDouble(getScaleX());
+        out.writeDouble(getScaleY());
+        
+        //Number of properties
+        out.writeInt(editableProperties.size());
+        
+        //Actual property values
+        for (Property prop : editableProperties)
+        {
+            if (prop instanceof ObjectProperty && ((ObjectProperty)prop).getValue() instanceof Color )
+            {
+                ColorWrapper colWrap = new ColorWrapper();
+                colWrap.strColor = ((Color)((ObjectProperty)prop).getValue()).toString();
+                out.writeObject(colWrap);
+            }
+            else
+            {
+                out.writeObject(prop.getValue());
+            }
+        }
+    }
+    
+    @Override
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException
+    {
+        //Position and size
+        setLayoutX(in.readDouble());
+        setLayoutY(in.readDouble());
+        setScaleX(in.readDouble());
+        setScaleY(in.readDouble());
+        
+        //Number of properties
+        int numProperties = in.readInt();
+        
+        //Actual property values
+        for (int i=0; i<numProperties; ++i)
+        {
+            Object obj = in.readObject();
+            
+            if (obj instanceof ColorWrapper)
+            {
+                ColorWrapper colWrap = (ColorWrapper)obj;
+                Color color = Color.valueOf(colWrap.strColor);
+            }
+            else
+            {
+                editableProperties.get(i).setValue(obj);
+            }
+        }
+    }
+    
     public void update()
     {
     }
